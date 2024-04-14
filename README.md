@@ -2,5 +2,8 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- created first springboot microservice demo project; jayslabs.microservicedemo.accounts
+
 proj: proj-test-1 (springboot 3.2.4 | jdk21 | mvn | jar)
 - created test project to test new workspace (local git, gh, eclipse)
