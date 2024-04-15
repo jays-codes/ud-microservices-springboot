@@ -7,10 +7,13 @@ import java.util.Random;
 import org.springframework.stereotype.Service;
 
 import jayslabs.microservicedemo.accounts.constants.AccountsConstants;
+import jayslabs.microservicedemo.accounts.dto.AccountsDTO;
 import jayslabs.microservicedemo.accounts.dto.CustomerDTO;
 import jayslabs.microservicedemo.accounts.entity.Accounts;
 import jayslabs.microservicedemo.accounts.entity.Customer;
 import jayslabs.microservicedemo.accounts.exception.CustomerAlreadyExistsException;
+import jayslabs.microservicedemo.accounts.exception.ResourceNotFoundException;
+import jayslabs.microservicedemo.accounts.mapper.AccountsMapper;
 import jayslabs.microservicedemo.accounts.mapper.CustomerMapper;
 import jayslabs.microservicedemo.accounts.repository.AccountsRepository;
 import jayslabs.microservicedemo.accounts.repository.CustomerRepository;
@@ -29,7 +32,7 @@ public class AccountsServiceImpl implements IAccountsService {
 		Customer cust = CustomerMapper.mapToCustomer(custdto, new Customer());
 		Optional<Customer> customer = custrepo.findByMobileNumber(custdto.getMobileNumber());
 		if (customer.isPresent()) {
-			throw new CustomerAlreadyExistsException("Customer already registerred with give mobile number " 
+			throw new CustomerAlreadyExistsException("Customer already registered with give mobile number " 
 					+ custdto.getMobileNumber());
 		}
 		
@@ -53,5 +56,23 @@ public class AccountsServiceImpl implements IAccountsService {
 		newacct.setCreatedBy("anonymous");
 		
 		return newacct;
+	}
+
+
+	@Override
+	public CustomerDTO fetchAccount(String mobile) {
+		
+		Customer customer = custrepo.findByMobileNumber(mobile).orElseThrow(
+				() -> new ResourceNotFoundException("Customer", "mobileNumber", mobile)
+				);
+		Long id = customer.getCustomerId();
+		Accounts acct = acctsrepo.findByCustomerId(id).orElseThrow(
+				() -> new ResourceNotFoundException("Accounts", "customerId", id.toString())
+				);
+		AccountsDTO acctsdto = AccountsMapper.mapToAccountsDTO(acct, new AccountsDTO());
+		CustomerDTO custdto = CustomerMapper.mapToCustomerDTO(customer, new CustomerDTO());
+		custdto.setAcctsdto(acctsdto);
+		
+		return custdto;		
 	}
 }
