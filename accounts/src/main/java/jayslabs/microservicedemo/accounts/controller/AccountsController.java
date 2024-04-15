@@ -11,13 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 import jayslabs.microservicedemo.accounts.constants.AccountsConstants;
 import jayslabs.microservicedemo.accounts.dto.CustomerDTO;
 import jayslabs.microservicedemo.accounts.dto.ResponseDTO;
+import jayslabs.microservicedemo.accounts.service.IAccountsService;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping(path="/api", produces= {MediaType.APPLICATION_JSON_VALUE})
+@AllArgsConstructor
 public class AccountsController {
+	
+	private IAccountsService acctsrvc;
 	
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> createAccount(@RequestBody CustomerDTO custdto){
+		
+		acctsrvc.createAccount(custdto);
 		
 		ResponseDTO respdto = new ResponseDTO(
 				AccountsConstants.STATUS_201,
