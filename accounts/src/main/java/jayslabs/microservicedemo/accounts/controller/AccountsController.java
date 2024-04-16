@@ -3,6 +3,7 @@ package jayslabs.microservicedemo.accounts.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -65,6 +66,30 @@ public class AccountsController {
 		respdto = new ResponseDTO(
 				AccountsConstants.STATUS_500,
 				AccountsConstants.MESSAGE_500);
+
+		return ResponseEntity
+				.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body(respdto);			
+	}
+	
+	@DeleteMapping("/delete")
+	public ResponseEntity<ResponseDTO> deleteAccount(@RequestParam String mobile){
+		boolean isDeleted = acctsrvc.deleteAccount(mobile);
+		ResponseDTO respdto = null;
+		
+		if (isDeleted) {
+			respdto = new ResponseDTO(
+					AccountsConstants.STATUS_200,
+					AccountsConstants.MESSAGE_200);
+					
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body(respdto);			
+		}
+
+		respdto = new ResponseDTO(
+				AccountsConstants.STATUS_417,
+				AccountsConstants.MESSAGE_417_DELETE);
 
 		return ResponseEntity
 				.status(HttpStatus.INTERNAL_SERVER_ERROR)
