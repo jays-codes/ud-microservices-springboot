@@ -14,7 +14,7 @@ import io.swagger.v3.oas.annotations.info.License;
 @EnableJpaAuditing(auditorAwareRef="auditAwareImpl")
 @OpenAPIDefinition(
 		info=@Info(
-				title="Accounts microservice REST API Documentation",
+				title="DEMO - Accounts microservice REST API",
 				description="Jayslabs Accounts microservice REST API Documentation",
 				version="v1",
 				contact=@Contact(
