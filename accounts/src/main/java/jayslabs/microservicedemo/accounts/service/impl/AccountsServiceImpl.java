@@ -36,8 +36,6 @@ public class AccountsServiceImpl implements IAccountsService {
 					+ custdto.getMobileNumber());
 		}
 		
-		cust.setCreatedAt(LocalDateTime.now());
-		cust.setCreatedBy("anonymous");
 		Customer savedCust = custrepo.save(cust);
 		acctsrepo.save(createNewAccount(savedCust));
 	}
@@ -52,8 +50,6 @@ public class AccountsServiceImpl implements IAccountsService {
 		newacct.setAccountNumber(randacctno);
 		newacct.setAccountType(AccountsConstants.SAVINGS);
 		newacct.setBranchAddress(AccountsConstants.ADDRESS);
-		newacct.setCreatedAt(LocalDateTime.now());
-		newacct.setCreatedBy("anonymous");
 		
 		return newacct;
 	}
@@ -89,8 +85,6 @@ public class AccountsServiceImpl implements IAccountsService {
 				);
 
 		AccountsMapper.mapToAccounts(acctsdto, acct);
-		acct.setUpdatedAt(LocalDateTime.now());
-		acct.setUpdatedBy("anonymous");
 		acct = acctsrepo.save(acct);
 		
 		Long custId = acct.getCustomerId();
@@ -100,8 +94,6 @@ public class AccountsServiceImpl implements IAccountsService {
 		
 		
 		CustomerMapper.mapToCustomer(custdto, cust);
-		cust.setUpdatedAt(LocalDateTime.now());
-		cust.setUpdatedBy("anonymous");
 		custrepo.save(cust);
 		
 		return true;
