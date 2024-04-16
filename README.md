@@ -3,8 +3,9 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
-- modify AccountsService, fetchAccount(String): CustomerDTO; Modify AccountsRepo findByCustomerId(); modify CustomerDTO to add AccountsDTO field; add ResourceNotFoundException + handler; create GET API in controller, fetchAccountDetails(@RequestParam): ResponseEntity<CustomerDTO>
-- CustomerMapper, mapToCustomerDTO(), mapToCustomer(); AccountsServiceImpl - createAccount(CustomerDTO), private createNewAccount(Customer); Exceptions - CustomerAlreadyExistException; custom CustomerRepository.findByMobileNumber(), Optional<Customer>, isPresent(); GlobalExceptionHandler, @ControllerAdvice, handleCustomException(CustomException, WebRequest), @ExceptionHandler
+- Create update Accounts API; modify AccountsService, updateAccount(CustomerDTO): boolean;  create PUT API in controller, updateAccountDetails(@RequestParam): ResponseEntity
+- Create fetch Account API; modify AccountsService, fetchAccount(String): CustomerDTO; Modify AccountsRepo findByCustomerId(); modify CustomerDTO to add AccountsDTO field; add ResourceNotFoundException + handler; create GET API in controller, fetchAccountDetails(@RequestParam): ResponseEntity<CustomerDTO>
+- Write Create Account API (POST); CustomerMapper, mapToCustomerDTO(), mapToCustomer(); AccountsServiceImpl - createAccount(CustomerDTO), private createNewAccount(Customer); Exceptions - CustomerAlreadyExistException; custom CustomerRepository.findByMobileNumber(), Optional<Customer>, isPresent(); GlobalExceptionHandler, @ControllerAdvice, handleCustomException(CustomException, WebRequest), @ExceptionHandler
 - define API AccountsController; @RequestMapping; define createAccount() @PostMapping, @RequestBody, ResponseEntity [status(), HttpStatus.CREATED, .body]; Create Service: IAccountsService interface, AccountsServiceImpl, @Service; AccountsConstants; AccountsMapper - mapToAccountsDTO(), mapToAccounts(); 
 - created DTO classes: AccountsDTO, CustomerDTO, @Data; ResponseDTO, ErrorResponseDTO
 - create Customer, Accounts Repositories: jpa.repository.JpaRepository interface, @Repository
