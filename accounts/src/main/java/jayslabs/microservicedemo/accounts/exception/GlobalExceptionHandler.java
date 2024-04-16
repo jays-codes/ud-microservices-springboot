@@ -13,6 +13,19 @@ import jayslabs.microservicedemo.accounts.dto.ErrorResponseDTO;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponseDTO> handleGlobalException(
+			Exception exception, WebRequest webRequest){
+		
+		ErrorResponseDTO errrespdto = new ErrorResponseDTO(
+		webRequest.getDescription(false),
+		HttpStatus.INTERNAL_SERVER_ERROR,
+		exception.getMessage(),
+		LocalDateTime.now());
+		
+		return new ResponseEntity<>(errrespdto, HttpStatus.INTERNAL_SERVER_ERROR);
+	}	
+	
 	@ExceptionHandler(CustomerAlreadyExistsException.class)
 	public ResponseEntity<ErrorResponseDTO> handleCustomerAlreadyExistsException(
 			CustomerAlreadyExistsException exception, WebRequest webRequest){
