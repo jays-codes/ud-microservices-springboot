@@ -92,7 +92,7 @@ public class AccountsServiceImpl implements IAccountsService {
 				);
 		
 		
-		CustomerMapper.mapToCustomer(custdto, cust);
+		cust = CustomerMapper.mapToCustomer(custdto, cust);
 		custrepo.save(cust);
 		
 		return true;

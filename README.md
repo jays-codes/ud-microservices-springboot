@@ -6,6 +6,8 @@ proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data 
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- Loans Microservice; Update Loan Details API; modified - controller,
+service, repository, findByLoanNumber(); edit AccountsService
 - Loans Microservice; Fetch Loan Details API; modified - controller, service
 - Loans Microservice; Create Loans API; added controller,  repository, service, entity, dto, mapper, exception, constants, audit; 
 - initial project setup and commit

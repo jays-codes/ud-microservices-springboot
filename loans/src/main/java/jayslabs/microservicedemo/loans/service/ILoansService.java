@@ -13,4 +13,10 @@ public interface ILoansService {
 	 * @param mobile - String
 	 **/
 	LoansDTO fetchLoan(String mobile);
+	
+	/**
+	 * @param dtp - LoansDTO object
+	 * @return boolean - whether or not Update Loan is successful
+	 **/
+	boolean updateLoan(LoansDTO dto);
 }

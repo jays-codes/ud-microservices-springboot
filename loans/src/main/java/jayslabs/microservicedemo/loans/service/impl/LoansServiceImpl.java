@@ -18,15 +18,15 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class LoansServiceImpl implements ILoansService {
 
-	private LoansRepository loansrepo;
+	private LoansRepository repo;
 	
 	@Override
 	public void createLoan(String mobile) {
-		if (loansrepo.findByMobileNumber(mobile).isPresent()) {
+		if (repo.findByMobileNumber(mobile).isPresent()) {
 			throw new LoansAlreadyExistsException("Loan already registered with given mobile number " 
 					+ mobile);
 		}
-		loansrepo.save(createNewLoan(mobile));
+		repo.save(createNewLoan(mobile));
 	}
 
 	private Loans createNewLoan(String mobile) {
@@ -44,12 +44,28 @@ public class LoansServiceImpl implements ILoansService {
 
 	@Override
 	public LoansDTO fetchLoan(String mobile) {
-		Loans loan = loansrepo.findByMobileNumber(mobile).orElseThrow(
+		Loans loan = repo.findByMobileNumber(mobile).orElseThrow(
 				()-> new ResourceNotFoundException("Loans", "Mobile Number", mobile.toString())
 				);
 		
 		LoansDTO dto = LoansMapper.mapToLoansDTO(loan, new LoansDTO());
 		
 		return dto;
+	}
+
+	@Override
+	public boolean updateLoan(LoansDTO dto) {
+		String loannum = dto.getLoanNumber();
+		
+		if (loannum.isEmpty() || loannum.isBlank()) return false;
+		
+		Loans loan = repo.findByLoanNumber(loannum).orElseThrow(
+				()-> new ResourceNotFoundException("Loans", "Loan Number", loannum)
+				);
+		
+		loan = LoansMapper.mapToLoans(dto, loan);
+		repo.save(loan);
+		
+		return true;
 	}
 }
