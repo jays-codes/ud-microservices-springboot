@@ -26,14 +26,26 @@ public class LoansDTO {
 	private String loanNumber;
 
 	@NotEmpty(message="Loan Type cannot be null or empty")
+    @Schema(
+            description = "Type of the loan", example = "Home Loan"
+    )
 	private String loanType;
 
 	@Positive(message="Total loan amount should be greater than zero")	
+    @Schema(
+            description = "Total loan amount", example = "100000"
+    )
 	private int totalLoan;
 
 	@PositiveOrZero(message="Total loan amount paid should be equal or greater than zero")
+    @Schema(
+            description = "Total loan amount paid", example = "1000"
+    )
 	private int amountPaid;
 
 	@PositiveOrZero(message="Total loan outstanding should be equal or greater than zero")
+    @Schema(
+            description = "Total outstanding amount against a loan", example = "99000"
+    )
 	private int outstandingAmount;	
 }
