@@ -1,13 +1,15 @@
 package jayslabs.microservicedemo.loans.service.impl;
 
-import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
 import jayslabs.microservicedemo.loans.constants.LoansConstants;
+import jayslabs.microservicedemo.loans.dto.LoansDTO;
 import jayslabs.microservicedemo.loans.entity.Loans;
 import jayslabs.microservicedemo.loans.exception.LoansAlreadyExistsException;
+import jayslabs.microservicedemo.loans.exception.ResourceNotFoundException;
+import jayslabs.microservicedemo.loans.mapper.LoansMapper;
 import jayslabs.microservicedemo.loans.repository.LoansRepository;
 import jayslabs.microservicedemo.loans.service.ILoansService;
 import lombok.AllArgsConstructor;
@@ -38,5 +40,16 @@ public class LoansServiceImpl implements ILoansService {
 		loan.setAmountPaid(0);
 		loan.setOutstandingAmount(LoansConstants.INIT_LOAN);
 		return loan;
+	}
+
+	@Override
+	public LoansDTO fetchLoan(String mobile) {
+		Loans loan = loansrepo.findByMobileNumber(mobile).orElseThrow(
+				()-> new ResourceNotFoundException("Loans", "Mobile Number", mobile.toString())
+				);
+		
+		LoansDTO dto = LoansMapper.mapToLoansDTO(loan, new LoansDTO());
+		
+		return dto;
 	}
 }
