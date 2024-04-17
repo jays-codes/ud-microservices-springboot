@@ -1,5 +1,6 @@
 package jayslabs.microservicedemo.loans.service.impl;
 
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.stereotype.Service;
@@ -62,6 +63,18 @@ public class LoansServiceImpl implements ILoansService {
 		Loans loan = repo.findByLoanNumber(loannum).orElseThrow(
 				()-> new ResourceNotFoundException("Loans", "Loan Number", loannum)
 				);
+		
+		String newnum = dto.getMobileNumber();
+		
+		Optional<Loans> findloan = repo.findByMobileNumber(newnum);
+		if (findloan.isPresent()) {
+			if (
+					findloan.get().getLoanNumber()
+					.equalsIgnoreCase(loan.getLoanNumber())==false) {
+				throw new LoansAlreadyExistsException("Loan already registered with given mobile number " 
+						+ newnum);
+			}							
+		}
 		
 		loan = LoansMapper.mapToLoans(dto, loan);
 		repo.save(loan);

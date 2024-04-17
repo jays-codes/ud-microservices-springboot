@@ -6,6 +6,7 @@ proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data 
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- Corrected Update Loan API logic to disallow updating Loan with existing phone number, allow updating to non existing phone number
 - Loans Microservice; Delete Loan API; modified - controller,
 service, repository, deleteByMobileNumber(); 
 - Loans Microservice; Update Loan Details API; modified - controller,
