@@ -64,8 +64,7 @@ public class LoansServiceImpl implements ILoansService {
 				()-> new ResourceNotFoundException("Loans", "Loan Number", loannum)
 				);
 		
-		String newnum = dto.getMobileNumber();
-		
+		String newnum = dto.getMobileNumber();		
 		Optional<Loans> findloan = repo.findByMobileNumber(newnum);
 		if (findloan.isPresent()) {
 			if (
