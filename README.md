@@ -6,6 +6,8 @@ proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data 
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- Loans Microservice; Delete Loan API; modified - controller,
+service, repository, deleteByMobileNumber(); 
 - Loans Microservice; Update Loan Details API; modified - controller,
 service, repository, findByLoanNumber(); edit AccountsService
 - Loans Microservice; Fetch Loan Details API; modified - controller, service

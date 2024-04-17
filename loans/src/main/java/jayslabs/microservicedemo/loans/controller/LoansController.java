@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -36,7 +37,7 @@ import lombok.AllArgsConstructor;
 @Validated
 public class LoansController {
 
-	private ILoansService loansrvc;
+	private ILoansService srvc;
 	
 	@Operation(
 			summary="Create Loan REST API",
@@ -50,7 +51,7 @@ public class LoansController {
 			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
 			String mobile){
 
-		loansrvc.createLoan(mobile);
+		srvc.createLoan(mobile);
 		
 		ResponseDTO respdto = new ResponseDTO(
 				LoansConstants.STATUS_201,
@@ -72,7 +73,7 @@ public class LoansController {
 	public ResponseEntity<LoansDTO> fetchAccountDetails(@RequestParam 
 			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
 			String mobile){
-		LoansDTO custdto = loansrvc.fetchLoan(mobile);
+		LoansDTO custdto = srvc.fetchLoan(mobile);
 		
 		return ResponseEntity
 				.status(HttpStatus.FOUND)
@@ -94,7 +95,7 @@ public class LoansController {
 	)
 	@PutMapping("/update")
 	public ResponseEntity<ResponseDTO> updateLoanDetails(@Valid @RequestBody LoansDTO dto){
-		boolean isUpdated = loansrvc.updateLoan(dto);
+		boolean isUpdated = srvc.updateLoan(dto);
 		ResponseDTO respdto = null;
 		
 		if (isUpdated) {
@@ -113,6 +114,41 @@ public class LoansController {
 
 		return ResponseEntity
 				.status(HttpStatus.EXPECTATION_FAILED)
+				.body(respdto);			
+	}
+	
+	@Operation(
+			summary="Delete Loan REST API",
+			description="Deletes Loan record given Phone number",
+			responses= {
+					@ApiResponse(responseCode="200", description="HTTP Status Loan Deleted"),
+					@ApiResponse(responseCode="417", description="Excpectation Failed"),					
+					@ApiResponse(responseCode="500", description="HTTP Status Internal Server Error")
+			}
+	)
+	@DeleteMapping("/delete")
+	public ResponseEntity<ResponseDTO> deleteLoan(@RequestParam 
+			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
+			String mobile){
+		boolean isDeleted = srvc.deleteLoan(mobile);
+		ResponseDTO respdto = null;
+		
+		if (isDeleted) {
+			respdto = new ResponseDTO(
+					LoansConstants.STATUS_200,
+					LoansConstants.MESSAGE_200);
+					
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body(respdto);			
+		}
+
+		respdto = new ResponseDTO(
+				LoansConstants.STATUS_417,
+				LoansConstants.MESSAGE_417_DELETE);
+
+		return ResponseEntity
+				.status(HttpStatus.INTERNAL_SERVER_ERROR)
 				.body(respdto);			
 	}
 }
