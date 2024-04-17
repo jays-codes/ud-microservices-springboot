@@ -87,7 +87,8 @@ public class AccountsController {
 						content=@Content(
 								schema=@Schema(implementation=ErrorResponseDTO.class)
 						)
-					)
+					),
+					@ApiResponse(responseCode="417", description="Excpectation Failed")					
 			}
 	)
 	@PutMapping("/update")
@@ -106,11 +107,11 @@ public class AccountsController {
 		}
 
 		respdto = new ResponseDTO(
-				AccountsConstants.STATUS_500,
-				AccountsConstants.MESSAGE_500);
+				AccountsConstants.STATUS_417,
+				AccountsConstants.MESSAGE_417_UPDATE);
 
 		return ResponseEntity
-				.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.status(HttpStatus.EXPECTATION_FAILED)
 				.body(respdto);			
 	}
 	
@@ -119,6 +120,7 @@ public class AccountsController {
 			description="Deletes Account using Phone number. Deletes both Account and Customer record.",
 			responses= {
 					@ApiResponse(responseCode="200", description="HTTP Status Account Deleted"),
+					@ApiResponse(responseCode="417", description="Excpectation Failed"),					
 					@ApiResponse(responseCode="500", description="HTTP Status Internal Server Error")
 			}
 	)
