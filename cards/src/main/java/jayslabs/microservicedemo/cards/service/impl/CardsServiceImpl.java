@@ -1,5 +1,6 @@
 package jayslabs.microservicedemo.cards.service.impl;
 
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.stereotype.Service;
@@ -49,6 +50,33 @@ public class CardsServiceImpl implements ICardsService {
 				);
 		CardsDTO dto = CardsMapper.mapToCardsDTO(card, new CardsDTO());
 		return dto;
+	}
+
+	@Override
+	public boolean updateCard(CardsDTO dto) {
+		String cardnum = dto.getCardNumber();
+		
+		if (cardnum.isEmpty() || cardnum.isBlank()) return false;
+		
+		Cards card = repo.findByCardNumber(cardnum).orElseThrow(
+				()-> new ResourceNotFoundException("Cards", "Card Number", cardnum)
+				);
+		
+		String newnum = dto.getMobileNumber();		
+		Optional<Cards> findloan = repo.findByMobileNumber(newnum);
+		if (findloan.isPresent()) {
+			if (
+					findloan.get().getCardNumber()
+					.equalsIgnoreCase(card.getCardNumber())==false) {
+				throw new CardsAlreadyExistsException("Card already registered with given mobile number " 
+						+ newnum);
+			}							
+		}
+		
+		card = CardsMapper.mapToCards(dto, card);
+		repo.save(card);
+		
+		return true;
 	}
 
 }

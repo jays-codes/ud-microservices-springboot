@@ -12,4 +12,10 @@ public interface ICardsService {
 	 * @param mobile - String
 	 **/
 	CardsDTO fetchCard (String mobile);
+	
+	/**
+	 * @param dto - CardsDTO object
+	 * @return boolean - whether or not Update Card is successful
+	 **/
+	boolean updateCard(CardsDTO dto);
 }
