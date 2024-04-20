@@ -5,8 +5,11 @@ import java.util.Random;
 import org.springframework.stereotype.Service;
 
 import jayslabs.microservicedemo.cards.constants.CardsConstants;
+import jayslabs.microservicedemo.cards.dto.CardsDTO;
 import jayslabs.microservicedemo.cards.entity.Cards;
 import jayslabs.microservicedemo.cards.exception.CardsAlreadyExistsException;
+import jayslabs.microservicedemo.cards.exception.ResourceNotFoundException;
+import jayslabs.microservicedemo.cards.mapper.CardsMapper;
 import jayslabs.microservicedemo.cards.repository.CardsRepository;
 import jayslabs.microservicedemo.cards.service.ICardsService;
 import lombok.AllArgsConstructor;
@@ -37,6 +40,15 @@ public class CardsServiceImpl implements ICardsService {
 		card.setAmountUsed(0);
 		card.setAvailableAmount(CardsConstants.INIT_TOTAL);
 		return card;
+	}
+
+	@Override
+	public CardsDTO fetchCard(String mobile) {
+		Cards card = repo.findByMobileNumber(mobile).orElseThrow(				
+				()-> new ResourceNotFoundException("Cards", "Mobile Number", mobile.toString())
+				);
+		CardsDTO dto = CardsMapper.mapToCardsDTO(card, new CardsDTO());
+		return dto;
 	}
 
 }

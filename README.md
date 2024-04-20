@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- Cards Microservice; Fetch Card Details API; modified - controller, service
 - Cards Microservice; Create Cards API; added controller, repository, service, entity, dto, mapper, exception, constants, audit;
 - initial project setup and commit
 

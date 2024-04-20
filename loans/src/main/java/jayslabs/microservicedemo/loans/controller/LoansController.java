@@ -70,7 +70,7 @@ public class LoansController {
 			}
 	)
 	@GetMapping("/fetch")
-	public ResponseEntity<LoansDTO> fetchAccountDetails(@RequestParam 
+	public ResponseEntity<LoansDTO> fetchLoansDetails(@RequestParam 
 			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
 			String mobile){
 		LoansDTO custdto = srvc.fetchLoan(mobile);

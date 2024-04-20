@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.constraints.Pattern;
 import jayslabs.microservicedemo.cards.constants.CardsConstants;
+import jayslabs.microservicedemo.cards.dto.CardsDTO;
 import jayslabs.microservicedemo.cards.dto.ResponseDTO;
 import jayslabs.microservicedemo.cards.service.ICardsService;
 import lombok.AllArgsConstructor;
@@ -42,6 +44,24 @@ public class CardsController {
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
 				.body(dto);
+	}
+	
+	@Operation(
+			summary="Fetch Cards REST API",
+			description="Retrieves Card Details using Phone Number.",
+			responses= {
+					@ApiResponse(responseCode="200", description="HTTP Status OK")					
+			}
+	)
+	@GetMapping("/fetch")
+	public ResponseEntity<CardsDTO> fetchCardDetails(@RequestParam 
+			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
+			String mobile){
+		CardsDTO custdto = srvc.fetchCard(mobile);
+		
+		return ResponseEntity
+				.status(HttpStatus.FOUND)
+				.body(custdto);
 	}
 	
 }
