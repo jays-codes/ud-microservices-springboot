@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -105,6 +106,43 @@ public class CardsController {
 		return ResponseEntity
 				.status(HttpStatus.EXPECTATION_FAILED)
 				.body(respdto);			
+	}
+	
+	
+	@Operation(
+			summary="Delete Card REST API",
+			description="Deletes Card record given Phone number",
+			responses= {
+					@ApiResponse(responseCode="200", description="HTTP Status Card Deleted"),
+					@ApiResponse(responseCode="417", description="Excpectation Failed"),					
+					@ApiResponse(responseCode="500", description="HTTP Status Internal Server Error")
+			}
+	)	
+	@DeleteMapping("/delete")
+	public ResponseEntity<ResponseDTO> deleteCard(@RequestParam 
+			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
+			String mobile){
+		boolean isDeleted = srvc.deleteCard(mobile);
+		ResponseDTO dto = null;
+		
+		if (isDeleted) {
+			dto = new ResponseDTO(
+					CardsConstants.STATUS_200,
+					CardsConstants.MESSAGE_200);
+					
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body(dto);			
+		}
+
+		dto = new ResponseDTO(
+				CardsConstants.STATUS_417,
+				CardsConstants.MESSAGE_417_DELETE);
+
+		return ResponseEntity
+				.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body(dto);	
+		
 	}
 	
 }

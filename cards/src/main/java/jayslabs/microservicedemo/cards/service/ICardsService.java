@@ -18,4 +18,10 @@ public interface ICardsService {
 	 * @return boolean - whether or not Update Card is successful
 	 **/
 	boolean updateCard(CardsDTO dto);
+	
+	/**
+	 * @param mobile- Mobile Number
+	 * @return boolean - whether or not Delete Card is successful
+	 **/
+	boolean deleteCard(String mobile);
 }
