@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- fixed jib to work with jdk 21; enabled jib for all microservices: accounts, loans, cards
 - created docker-compose.yml to run accounts, loans, cards microservices
 - wrote Dockerfile for Accounts Microservice
 - Enhance Documentation: method APIs @Tag, @Operation, @ApiResponse; DTOs @Schema [name, description, example]; Modified update to define @Schema for ErrorReponseDTO
@@ -23,6 +24,7 @@ proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring da
 - created first springboot microservice demo project; jayslabs.microservicedemo.accounts
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- fixed jib to work with jdk 21; enabled jib for all microservices: accounts, loans, cards
 - generated docker image via google jib; modified pom, used jdk 17
 - Cards Microservice; Delete Card API; modified - controller,
 service, repository, deleteByMobileNumber()
@@ -33,6 +35,7 @@ service, repository, findByCardNumber();
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- fixed jib to work with jdk 21; enabled jib for all microservices: accounts, loans, cards
 - modified pom.xml to generate docker image via Buildpacks
 - Corrected Update Loan API logic to disallow updating Loan with existing phone number, allow updating to non existing phone number
 - Loans Microservice; Delete Loan API; modified - controller,
