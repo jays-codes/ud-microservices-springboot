@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- passed property from app.yml to property in controller; via autoinject @Value; created GET REST API call to return value
 - fixed jib to work with jdk 21; enabled jib for all microservices: accounts, loans, cards
 - created docker-compose.yml to run accounts, loans, cards microservices
 - wrote Dockerfile for Accounts Microservice

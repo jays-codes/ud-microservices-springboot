@@ -1,5 +1,7 @@
 package jayslabs.microservicedemo.accounts.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
@@ -25,7 +28,6 @@ import jayslabs.microservicedemo.accounts.dto.CustomerDTO;
 import jayslabs.microservicedemo.accounts.dto.ErrorResponseDTO;
 import jayslabs.microservicedemo.accounts.dto.ResponseDTO;
 import jayslabs.microservicedemo.accounts.service.IAccountsService;
-import lombok.AllArgsConstructor;
 
 @Tag(
 		name="CRUD REST APIs for Accounts in JayslabS",
@@ -33,11 +35,19 @@ import lombok.AllArgsConstructor;
 )
 @RestController
 @RequestMapping(path="/api", produces= {MediaType.APPLICATION_JSON_VALUE})
-@AllArgsConstructor
+//@AllArgsConstructor
 @Validated
 public class AccountsController {
 	
-	private IAccountsService acctsrvc;
+	private final IAccountsService acctsrvc;
+	
+	@Value("${build.version}")
+	private String buildVersion;
+	
+	public AccountsController(IAccountsService acctsvc) {
+		this.acctsrvc=acctsvc;
+	}
+	
 	
 	@Operation(
 			summary="Create Account REST API",
@@ -149,4 +159,31 @@ public class AccountsController {
 				.status(HttpStatus.INTERNAL_SERVER_ERROR)
 				.body(respdto);			
 	}
+	
+	
+    @Operation(
+            summary = "Fetch build-info REST API",
+            description = "REST API to fetch build info"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDTO.class)
+                    )
+            )
+    }
+    )	
+	@GetMapping("/build-info")
+	public ResponseEntity<String> getBuildInfo(){
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(buildVersion);
+	}
+	
 }
