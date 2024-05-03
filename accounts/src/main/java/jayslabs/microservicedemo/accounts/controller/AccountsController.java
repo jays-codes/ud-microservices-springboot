@@ -25,6 +25,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import jayslabs.microservicedemo.accounts.constants.AccountsConstants;
+import jayslabs.microservicedemo.accounts.dto.AccountsContactInfoDTO;
 import jayslabs.microservicedemo.accounts.dto.CustomerDTO;
 import jayslabs.microservicedemo.accounts.dto.ErrorResponseDTO;
 import jayslabs.microservicedemo.accounts.dto.ResponseDTO;
@@ -47,6 +48,10 @@ public class AccountsController {
 	
 	@Autowired
 	private Environment env;
+
+	@Autowired
+	private AccountsContactInfoDTO infodto;
+	
 	
 	public AccountsController(IAccountsService acctsvc) {
 		this.acctsrvc=acctsvc;
@@ -215,4 +220,28 @@ public class AccountsController {
 				.body(env.getProperty("JAVA_HOME"));
 	}
 	
+    @Operation(
+            summary = "Fetch Support Info REST API",
+            description = "REST API to fetch Support"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDTO.class)
+                    )
+            )
+    }
+    )	
+	@GetMapping("/supportinfo")
+	public ResponseEntity<AccountsContactInfoDTO> getContactInfo(){
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(infodto);
+	}
 }

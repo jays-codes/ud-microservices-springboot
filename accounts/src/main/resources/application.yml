@@ -20,3 +20,12 @@ spring:
 
 build:
   version: "1.113"
+  
+accounts:
+  message: "Accounts related local APIs"
+  contactDetails:
+    name: "User Support - Developer"
+    email: "test@email.com"
+  onCallSupport:
+  - (416) 1234567
+  - (416) 1234568
