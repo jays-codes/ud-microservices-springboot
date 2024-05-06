@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+      
+build:
+  version: "2.99"
+
+loans:
+  message: "Loans related QA APIs"
+  contactDetails:
+    name: "User Support - QA"
+    email: "qa@jayslabs.com"
+  onCallSupport:
+  - (416) 1234567
+  - (416) 1234568

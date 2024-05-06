@@ -2,6 +2,22 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- Added Springboot profiles for qa, prod env. Set spring.profiles.active
+- passed values from app.yml to dto:LoansInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<LoansContactInfoDTO>
+- passed values from environment variables to env:Environment property in controller; via @Autowired; created GET REST API call to return value from env.getProperty()
+- passed property from app.yml to property in controller; via autoinject @Value; created GET REST API call to return value
+- fixed jib to work with jdk 21; enabled jib for all microservices: accounts, loans, cards
+- modified pom.xml to generate docker image via Buildpacks
+- Corrected Update Loan API logic to disallow updating Loan with existing phone number, allow updating to non existing phone number
+- Loans Microservice; Delete Loan API; modified - controller,
+service, repository, deleteByMobileNumber(); 
+- Loans Microservice; Update Loan Details API; modified - controller,
+service, repository, findByLoanNumber(); edit AccountsService
+- Loans Microservice; Fetch Loan Details API; modified - controller, service
+- Loans Microservice; Create Loans API; added controller,  repository, service, entity, dto, mapper, exception, constants, audit; 
+- initial project setup and commit
+
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
 - Added Springboot profiles for qa, prod env. Set spring.profiles.active
 - passed values from app.yml to dto:AccountsInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<AccountsContactInfoDTO>
@@ -36,18 +52,6 @@ service, repository, deleteByMobileNumber()
 service, repository, findByCardNumber(); 
 - Cards Microservice; Fetch Card Details API; modified - controller, service
 - Cards Microservice; Create Cards API; added controller, repository, service, entity, dto, mapper, exception, constants, audit;
-- initial project setup and commit
-
-proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
-- fixed jib to work with jdk 21; enabled jib for all microservices: accounts, loans, cards
-- modified pom.xml to generate docker image via Buildpacks
-- Corrected Update Loan API logic to disallow updating Loan with existing phone number, allow updating to non existing phone number
-- Loans Microservice; Delete Loan API; modified - controller,
-service, repository, deleteByMobileNumber(); 
-- Loans Microservice; Update Loan Details API; modified - controller,
-service, repository, findByLoanNumber(); edit AccountsService
-- Loans Microservice; Fetch Loan Details API; modified - controller, service
-- Loans Microservice; Create Loans API; added controller,  repository, service, entity, dto, mapper, exception, constants, audit; 
 - initial project setup and commit
 
 proj: proj-test-1 (springboot 3.2.4 | jdk21 | mvn | jar)
