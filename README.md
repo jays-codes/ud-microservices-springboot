@@ -2,6 +2,10 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
+- modified Application: @EnableConfigServer
+- initial project setup and commit
+
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
 - Added Springboot profiles for qa, prod env. Set spring.profiles.active
 - passed values from app.yml to dto:CardsInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<LoansContactInfoDTO>
