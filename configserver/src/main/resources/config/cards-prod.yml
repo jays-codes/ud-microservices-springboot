@@ -1,0 +1,11 @@
+build:
+  version: "1.11"
+  
+cards:
+  message: "Cards related QA APIs"
+  contactDetails:
+    name: "User Support - QA"
+    email: "qa@jayslabs.com"
+  onCallSupport:
+  - (800) 1234567
+  - (800) 1234568

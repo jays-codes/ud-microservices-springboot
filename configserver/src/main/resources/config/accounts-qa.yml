@@ -1,0 +1,11 @@
+build:
+  version: "2.10"
+  
+accounts:
+  message: "Accounts related QA APIs"
+  contactDetails:
+    name: "User Support - QA Lead"
+    email: "qa@jayslabs.com"
+  onCallSupport:
+  - (505) 1234567
+  - (506) 1234568

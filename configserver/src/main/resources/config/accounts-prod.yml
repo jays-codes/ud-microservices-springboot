@@ -1,0 +1,11 @@
+build:
+  version: "1.10"
+  
+accounts:
+  message: "Accounts related Prod APIs"
+  contactDetails:
+    name: "User Support - Prod Owner"
+    email: "prodowner@jayslabs.com"
+  onCallSupport:
+  - (800) 1234567
+  - (800) 1234568
