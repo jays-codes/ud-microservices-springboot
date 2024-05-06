@@ -17,3 +17,23 @@ spring:
         hibernate:
             ddl-auto: update
         show-sql: true
+    config:
+      import:
+      - "application_qa.yml"
+      - "application_prod.yml"
+    profiles:
+      active:
+       - "dev"
+ 
+
+build:
+  version: "3.33"
+
+cards:
+  message: "Cards related local APIs"
+  contactDetails:
+    name: "User Support - Developer"
+    email: "dev@jayslabs.com"
+  onCallSupport:
+  - (416) 1234567
+  - (416) 1234568

@@ -2,6 +2,21 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- Added Springboot profiles for qa, prod env. Set spring.profiles.active
+- passed values from app.yml to dto:CardsInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<LoansContactInfoDTO>
+- passed values from environment variables to env:Environment property in controller; via @Autowired; created GET REST API call to return value from env.getProperty()
+- passed property from app.yml to property in controller; via autoinject @Value; created GET REST API call to return value
+- fixed jib to work with jdk 21; enabled jib for all microservices: accounts, loans, cards
+- generated docker image via google jib; modified pom, used jdk 17
+- Cards Microservice; Delete Card API; modified - controller,
+service, repository, deleteByMobileNumber()
+- Cards Microservice; Update Card Details API; modified - controller,
+service, repository, findByCardNumber(); 
+- Cards Microservice; Fetch Card Details API; modified - controller, service
+- Cards Microservice; Create Cards API; added controller, repository, service, entity, dto, mapper, exception, constants, audit;
+- initial project setup and commit
+
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
 - Added Springboot profiles for qa, prod env. Set spring.profiles.active
 - passed values from app.yml to dto:LoansInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<LoansContactInfoDTO>
@@ -42,17 +57,6 @@ proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring da
 - H2 Setup, Modified application.yml, schema.sql (customer, accounts table)
 - created @RestController - AccountsController, GET /hworld api: getHWorld(); comfigured lombok
 - created first springboot microservice demo project; jayslabs.microservicedemo.accounts
-
-proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
-- fixed jib to work with jdk 21; enabled jib for all microservices: accounts, loans, cards
-- generated docker image via google jib; modified pom, used jdk 17
-- Cards Microservice; Delete Card API; modified - controller,
-service, repository, deleteByMobileNumber()
-- Cards Microservice; Update Card Details API; modified - controller,
-service, repository, findByCardNumber(); 
-- Cards Microservice; Fetch Card Details API; modified - controller, service
-- Cards Microservice; Create Cards API; added controller, repository, service, entity, dto, mapper, exception, constants, audit;
-- initial project setup and commit
 
 proj: proj-test-1 (springboot 3.2.4 | jdk21 | mvn | jar)
 - created test project to test new workspace (local git, gh, eclipse)
