@@ -39,7 +39,8 @@ service, repository, findByLoanNumber(); edit AccountsService
 - initial project setup and commit
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
-- Added Springboot profiles for qa, prod env. Set spring.profiles.active
+- added Config Client dependency to project; modified app.yml to load profile from Configserver
+- added Springboot profiles for qa, prod env. Set spring.profiles.active
 - passed values from app.yml to dto:AccountsInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<AccountsContactInfoDTO>
 - passed values from environment variables to env:Environment property in controller; via @Autowired; created GET REST API call to return value from env.getProperty()
 - passed property from app.yml to property in controller; via autoinject @Value; created GET REST API call to return value

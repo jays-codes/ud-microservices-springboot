@@ -4,6 +4,8 @@ server:
 spring:
     application:
         name: accounts
+    profiles:
+      active: "prod"
     datasource:
         url: jdbc:h2:mem:testdb
 #        driverClassName: org.h2.Driver
@@ -18,22 +20,5 @@ spring:
             ddl-auto: update
         show-sql: true
     config:
-      import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-    profiles:
-      active:
-       - "prod"
-    
-
-build:
-  version: "3.10"
-
-accounts:
-  message: "Accounts related local APIs"
-  contactDetails:
-    name: "User Support - Developer"
-    email: "dev@jayslabs.com"
-  onCallSupport:
-  - (416) 1234567
-  - (416) 1234568
+      import: "optional:configserver:http://localhost:8072/"
+        
