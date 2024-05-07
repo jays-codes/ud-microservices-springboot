@@ -8,6 +8,8 @@ proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring b
 - initial project setup and commit
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- added Config Client dependency to cards microservice project; modified
+app.yml to load profile from Configserver
 - Added Springboot profiles for qa, prod env. Set spring.profiles.active
 - passed values from app.yml to dto:CardsInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<LoansContactInfoDTO>
 - passed values from environment variables to env:Environment property in controller; via @Autowired; created GET REST API call to return value from env.getProperty()
