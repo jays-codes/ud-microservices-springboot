@@ -18,21 +18,7 @@ spring:
             ddl-auto: update
         show-sql: true
     config:
-      import:
-      - "application_qa.yml"
-      - "application_prod.yml"
+      import: "optional:configserver:http://localhost:8072/"
     profiles:
-      active:
-       - "prod"
+      active: "qa"
        
-build:
-  version: "3.99"
-
-loans:
-  message: "Loans related local APIs"
-  contactDetails:
-    name: "User Support - Developer"
-    email: "dev@jayslabs.com"
-  onCallSupport:
-  - (416) 1234567
-  - (416) 1234568
