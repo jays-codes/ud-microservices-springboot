@@ -1,0 +1,11 @@
+build:
+  version: "1.11"
+  
+cards:
+  message: "Cards related PROD APIs"
+  contactDetails:
+    name: "User Support - Prod Owner"
+    email: "prod@jayslabs.com"
+  onCallSupport:
+  - (800) 1234567
+  - (800) 1234568

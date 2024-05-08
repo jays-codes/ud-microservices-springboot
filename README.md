@@ -2,6 +2,9 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+folder: gh-config
+- external github folder hosting yml property files used by microservices
+
 proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
 - read property ymls from external folder
 - refactored ymls, moved to Configserver
