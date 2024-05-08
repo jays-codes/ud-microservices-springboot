@@ -2,13 +2,47 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    #active: native
+    active: git
   cloud:
     config:
       server:
-        native:
+        #native:
           #search-locations: "classpath:/config"
-          search-locations: "file:///C://jay//training//workspaces//eclipse-microservices-springboot-2024//configserver//config"
-  
+          #search-locations: "file:///C://jay//training//workspaces//eclipse-microservices-springboot-2024//configserver//config"
+        git:
+          uri: "https://github.com/jays-codes/gh-config-demo.git"
+          default-label: master
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+#        git:
+#          uri: "git@github.com:jays-codes/gh-config-demo.git"
+#          strictHostKeyChecking: false
+#          timeout: 5
+#          search-paths: gh-config
+#          clone-on-start: true
+#          force-pull: true
+#          default-label: master
+#          ignoreLocalSshSettings: true
+#          knownHostsFile: "file:///C://Users//zai_m//.ssh//known_hosts"
+#          hostKeyAlgorithm: ssh-rsa
+#          privateKey: | 
+#                       -----BEGIN RSA PRIVATE KEY-----
+#                       Proc-Type: 4,ENCRYPTED
+#                       DEK-Info: DES-EDE3-CBC,4BB49245F568DDD5
+#
+#                       IW+oyq/2ivs3rEFuSOaChrVeyCgE/vqvyXn+afxCbChNHDq8bZlXhgu7QwTh6dl2
+#                       xql7szy/JDY7m5Eq4rWGYDXaUGZMv60vgVBA6B/40bUqsYk7M9GUMYrC5Bx71EuF
+#                       pmGC0X6WvvmtSftV+Z8+8JfDKBmmfPrAgM143TYzNmTtlOco7Mxqtvr1rq3/Bf7d
+#                       1Tw/6YNwtmKsYQpcPXO1r7mSkPUGEpHfdd0onNkAk/Mlkx+EzLCVUN05Cw+fAtvx
+#                       sAszfDZEktbgB1tHTMaR2iK8xB4U6VBRotviDy0boNnmEv0r4fm0L/yeTdeCqzyB
+#                       JL981FXa5Gwd7y3S93iVaJLu/xmQiSfjsDwbahZSPFI8fsuhRq8q1K8ELHqta0XR
+#                       s4ihRnm1j8Porjfw05NzZOmxlJv2EyeNIoKdXZv9eCWTILJGgVvZvE75IF/F1ZBW
+#                       tK+vItK9dx9oKsZjUWlOLHXxnmIQ9WOT0g1eW2zqTNuTjWY6YTelz5qe0zu8VjG5
+#                       sA6PL4hJ/Nca6OVECCTgu0bj64mw1kj4+5cRh5v+QxbGrU+QHdfr070FI281fSn9
+#                       j90mIB8Lx1Y/1QJcyVJYn8bYT9ZYwFWpqmI63nITI1k=
+#                       -----END RSA PRIVATE KEY-----
+
 server:
   port: 8072
