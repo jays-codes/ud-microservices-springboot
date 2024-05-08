@@ -7,7 +7,8 @@ spring:
     config:
       server:
         native:
-          search-locations: "classpath:/config"
+          #search-locations: "classpath:/config"
+          search-locations: "file:///C://jay//training//workspaces//eclipse-microservices-springboot-2024//configserver//config"
   
 server:
   port: 8072
