@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 repo: gh-config-demo
+- Updated contactsInfoDTOs to change prop values at runtime via actuator
 - modified app.yml for cloud.config.server.git entries
 - external github repo hosting yml property files used by microservices
 
