@@ -46,3 +46,7 @@ spring:
 
 server:
   port: 8072
+
+encrypt:
+  key: "THE123QUICK12345BROWN12345FOX123"
+  

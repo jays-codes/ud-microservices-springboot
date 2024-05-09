@@ -5,7 +5,7 @@ accounts:
   message: "Accounts related Prod APIs"
   contactDetails:
     name: "User Support - Prod Owner"
-    email: "prodowner@jayslabs.com"
+    email: "{cipher}12d84b68f8ebdb2a085df10cead21e3728cb670ea8848e602648f84eba97754304bc108755d8ca0b4fde570686024386"
   onCallSupport:
   - (800) 1234567
   - (800) 1234568
