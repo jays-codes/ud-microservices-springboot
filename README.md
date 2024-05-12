@@ -2,6 +2,10 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+repo: ud-microservices-springboot-config
+- created default/docker-compose.yml
+- created folder for docker-compose
+- initial repo setup
 
 proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
 - added dependency: spring-cloud-config-monitor; setup github webhook
@@ -51,6 +55,7 @@ service, repository, findByLoanNumber(); edit AccountsService
 - initial project setup and commit
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- moved docker-compose to central location
 - added Config Client dependency to project; modified app.yml to load profile from Configserver
 - added Springboot profiles for qa, prod env. Set spring.profiles.active
 - passed values from app.yml to dto:AccountsInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<AccountsContactInfoDTO>
