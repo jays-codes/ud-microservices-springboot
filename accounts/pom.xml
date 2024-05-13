@@ -107,9 +107,6 @@
 					<to>
 						<image>jaymenorca/${project.artifactId}:d2</image>
 					</to>
-					<from>
-						<image>openjdk:21-jdk-slim</image>
-					</from>
 				</configuration>
 			</plugin>
 			<plugin>
