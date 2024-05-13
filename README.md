@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
+- removed <from> in jib plugin is this is causing the curl to not be recognized
 - updated jib version; added jib dep for configserver
 - modified yml to monitor liveness, readiness
 - added dependency: spring-cloud-config-monitor; setup github webhook
