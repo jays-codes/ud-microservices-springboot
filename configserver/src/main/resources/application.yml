@@ -13,7 +13,7 @@ spring:
         git:
           uri: "https://github.com/jays-codes/gh-config-demo.git"
           default-label: master
-          timeout: 5
+          timeout: 60
           clone-on-start: true
           force-pull: true
 #        git:
@@ -50,9 +50,6 @@ spring:
     username: "guest"
     password: "guest"  
 
-server:
-  port: 8072
-
 management:
   endpoints:
     web:
@@ -68,7 +65,9 @@ management:
       probes:
         enabled: true
 
-
 encrypt:
   key: "THE123QUICK12345BROWN12345FOX123"
   
+server:
+  port: 8072
+

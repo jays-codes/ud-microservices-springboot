@@ -2,6 +2,15 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
+- updated jib version; added jib dep for configserver
+- modified yml to monitor liveness, readiness
+- added dependency: spring-cloud-config-monitor; setup github webhook
+- read property ymls from external folder
+- refactored ymls, moved to Configserver
+- modified Application: @EnableConfigServer
+- initial project setup and commit
+
 repo: ud-microservices-springboot-config
 - refactored compose.yml to separate common properties to another file: common-config.yml
 - added definition for rabbitmq; rabbitmq dependency of configserver
@@ -9,14 +18,6 @@ repo: ud-microservices-springboot-config
 - created default/docker-compose.yml
 - created folder for docker-compose
 - initial repo setup
-
-proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
-- modified yml to monitor liveness, readiness
-- added dependency: spring-cloud-config-monitor; setup github webhook
-- read property ymls from external folder
-- refactored ymls, moved to Configserver
-- modified Application: @EnableConfigServer
-- initial project setup and commit
 
 repo: gh-config-demo
 - added dep: spring-cloud-starter-bus-amqp; added rabbitmq configuration
