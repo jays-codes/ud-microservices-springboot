@@ -14,6 +14,7 @@ proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring b
 - initial project setup and commit
 
 repo: ud-microservices-springboot-config
+- added common-config.yml for qa and prod env
 - refactored compose.yml to separate common properties to another file: common-config.yml
 - added definition for rabbitmq; rabbitmq dependency of configserver
 - modify compose file to ensure liveness and readiness of configserver; configserver dependency of other microservices
