@@ -44,11 +44,11 @@ spring:
 #                       j90mIB8Lx1Y/1QJcyVJYn8bYT9ZYwFWpqmI63nITI1k=
 #                       -----END RSA PRIVATE KEY-----
 
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"  
+#  rabbitmq:
+#    host: "localhost"
+#    port: 5672
+#    username: "guest"
+#    password: "guest"  
 
 management:
   endpoints:
