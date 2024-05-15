@@ -41,7 +41,7 @@ import jayslabs.microservicedemo.loans.service.ILoansService;
 @Validated
 public class LoansController {
 
-	private ILoansService srvc;
+	private final ILoansService srvc;
 	
 	@Value("${build.version}")
 	private String buildVersion;
@@ -51,6 +51,10 @@ public class LoansController {
 
 	@Autowired
 	private LoansContactInfoDTO infodto;
+	
+	public LoansController(ILoansService srvc) {
+		this.srvc=srvc;
+	}
 	
 	@Operation(
 			summary="Create Loan REST API",

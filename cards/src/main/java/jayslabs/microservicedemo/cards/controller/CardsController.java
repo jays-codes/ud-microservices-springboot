@@ -36,7 +36,7 @@ import jayslabs.microservicedemo.cards.service.ICardsService;
 @Validated
 public class CardsController {
 
-	private ICardsService srvc;
+	private final ICardsService srvc;
 
 	@Value("${build.version}")
 	private String buildVersion;
@@ -46,6 +46,10 @@ public class CardsController {
 
 	@Autowired
 	private CardsContactInfoDTO infodto;	
+	
+	public CardsController(ICardsService srvc) {
+		this.srvc=srvc;
+	}
 	
 	@Operation(
 			summary="Create Card REST API",

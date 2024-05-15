@@ -30,6 +30,8 @@ repo: gh-config-demo
 - external github repo hosting yml property files used by microservices
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- fixed controller constructor to init srvc
+- removed h2 dependency; add mysql dep: mysql-connector-j; set application.yml to use mysql properties;
 - added Config Client dependency to cards microservice project; modified
 app.yml to load profile from Configserver
 - Added Springboot profiles for qa, prod env. Set spring.profiles.active
@@ -47,6 +49,8 @@ service, repository, findByCardNumber();
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- fixed controller constructor to init srvc
+- removed h2 dependency; add mysql dep: mysql-connector-j; set application.yml to use mysql properties;
 - added Config Client dependency to project; modified app.yml to load profile from Configserver
 - Added Springboot profiles for qa, prod env. Set spring.profiles.active
 - passed values from app.yml to dto:LoansInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<LoansContactInfoDTO>
@@ -64,6 +68,8 @@ service, repository, findByLoanNumber(); edit AccountsService
 - initial project setup and commit
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- fixed controller constructor to init srvc
+- removed h2 dependency; add mysql dep: mysql-connector-j; set application.yml to use mysql properties;
 - moved docker-compose to central location
 - added Config Client dependency to project; modified app.yml to load profile from Configserver
 - added Springboot profiles for qa, prod env. Set spring.profiles.active
