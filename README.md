@@ -15,6 +15,7 @@ proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring b
 - initial project setup and commit
 
 repo: ud-microservices-springboot-config
+- H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
 - updated docker-compose.yml, common-config.yml for all env, to set mysql containers
 - added common-config.yml for qa and prod env
 - refactored compose.yml to separate common properties to another file: common-config.yml
@@ -31,6 +32,7 @@ repo: gh-config-demo
 - external github repo hosting yml property files used by microservices
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
 - fixed controller constructor to init srvc
 - removed h2 dependency; add mysql dep: mysql-connector-j; set application.yml to use mysql properties;
 - added Config Client dependency to cards microservice project; modified
@@ -50,6 +52,7 @@ service, repository, findByCardNumber();
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
 - fixed controller constructor to init srvc
 - removed h2 dependency; add mysql dep: mysql-connector-j; set application.yml to use mysql properties;
 - added Config Client dependency to project; modified app.yml to load profile from Configserver
@@ -69,6 +72,7 @@ service, repository, findByLoanNumber(); edit AccountsService
 - initial project setup and commit
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
 - fixed controller constructor to init srvc
 - removed h2 dependency; add mysql dep: mysql-connector-j; set application.yml to use mysql properties;
 - moved docker-compose to central location
