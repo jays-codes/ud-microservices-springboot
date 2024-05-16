@@ -2,6 +2,10 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config Client, spring boot actuator)
+- @EnableEurekaServer, modify app.yml, add eurekaserver.yml to gh-config
+- initial proj setup
+
 proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
 - removed rabbitmq, spring cloud monitor dependencies from all services; modifed pom, app.yml
 - updated other services pom to remove <from>
