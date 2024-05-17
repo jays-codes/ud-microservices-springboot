@@ -6,6 +6,40 @@ proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config C
 - @EnableEurekaServer, modify app.yml, add eurekaserver.yml to gh-config
 - initial proj setup
 
+proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- added dependency: OpenFeign; @EnableFeignClients; new package service.client - new interfaces: CardsFeignClient, LoansFeignClient; In accounts, new CustomerDetailsDTO, updated CustomerMapper; ICustomerService, CustomerServiceImpl - inject CardsFeignClient, LoansFeignClient; new CustomerController - fetchCustomerDetails
+- updated spring.cloud.version to 2003.0.0 from 2023.0.1 due to spring cloud bug
+- added dep: Eureka Discovery Client; modified yml to connect to eurekaserver, added actuator related info
+- H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
+- fixed controller constructor to init srvc
+- removed h2 dependency; add mysql dep: mysql-connector-j; set application.yml to use mysql properties;
+- moved docker-compose to central location
+- added Config Client dependency to project; modified app.yml to load profile from Configserver
+- added Springboot profiles for qa, prod env. Set spring.profiles.active
+- passed values from app.yml to dto:AccountsInfoDTO (java record) property in controller - via @Autowired; created GET REST API call to return ResponseEntity<AccountsContactInfoDTO>
+- passed values from environment variables to env:Environment property in controller; via @Autowired; created GET REST API call to return value from env.getProperty()
+- passed property from app.yml to property in controller; via autoinject @Value; created GET REST API call to return value
+- fixed jib to work with jdk 21; enabled jib for all microservices: accounts, loans, cards
+- created docker-compose.yml to run accounts, loans, cards microservices
+- wrote Dockerfile for Accounts Microservice
+- Enhance Documentation: method APIs @Tag, @Operation, @ApiResponse; DTOs @Schema [name, description, example]; Modified update to define @Schema for ErrorReponseDTO
+- Wrote documentation via springdoc-openapi; added dep - springdoc-openapi-starter-webmvc-ui; modify AccountsApplication - @OpenAPIDefinition, @Info, @Content, @License, @ExternalDocumentation
+- used Spring Data to handle updates to Audit Columns: @CreatedDate, @CreatedBy, @LastModifiedDate, @LastModifiedBy; @Component AuditAwareImpl, getCurrentAuditor(); BaseEntity, @EntityListeners; in SpringBootApp, @EnableJpaAuditing
+- added Validation annotations - jakarta.validation.constraints, @NotEmpty, @Size, @Email, @Pattern(regexp); Controller - @Validated, @Valid (for @RequestBody), @Pattern (for @RequestParam); override handleMethodArgumentNotValid() in GlobalExceptionHandler
+- Added Global Exception handler, handleGlobalException() for Exception
+- Create Delete Account API; modify AccountsService, deleteAccount(Sring): boolean, custrepo.deleteById(Long); modify AccountsRepository add void deleteByCustomerId(), @Transactional;create DELETE API in controller, deleteAccountDetails(@RequestParam mobile): ResponseEntity<ResponseDTO>
+- Create update Accounts API; modify AccountsService, updateAccount(CustomerDTO): boolean;  create PUT API in controller, updateAccountDetails(@RequestBody CustomerDTO): ResponseEntity
+- Create fetch Account API; modify AccountsService, fetchAccount(String): CustomerDTO; Modify AccountsRepo findByCustomerId(); modify CustomerDTO to add AccountsDTO field; add ResourceNotFoundException + handler; create GET API in controller, fetchAccountDetails(@RequestParam): ResponseEntity<CustomerDTO>
+- Write Create Account API (POST); CustomerMapper, mapToCustomerDTO(), mapToCustomer(); AccountsServiceImpl - createAccount(CustomerDTO), private createNewAccount(Customer); Exceptions - CustomerAlreadyExistException; custom CustomerRepository.findByMobileNumber(), Optional<Customer>, isPresent(); GlobalExceptionHandler, @ControllerAdvice, handleCustomException(CustomException, WebRequest), @ExceptionHandler
+- define API AccountsController; @RequestMapping; define createAccount() @PostMapping, @RequestBody, ResponseEntity [status(), HttpStatus.CREATED, .body]; Create Service: IAccountsService interface, AccountsServiceImpl, @Service; AccountsConstants; AccountsMapper - mapToAccountsDTO(), mapToAccounts(); 
+- created DTO classes: AccountsDTO, CustomerDTO, @Data; ResponseDTO, ErrorResponseDTO
+- create Customer, Accounts Repositories: jpa.repository.JpaRepository interface, @Repository
+- Entities: BaseEntity @MappedSuperclass, Lombok [@Getter, @Setter, @ToString]; Customer Entity @Entity, Lombok [@AllArgsConstructor, @NoArgsConstructor], @Id, @GeneratedValue, @GenericGenerator; Accounts Entity
+- H2 Setup, Modified application.yml, schema.sql (customer, accounts table)
+- created @RestController - AccountsController, GET /hworld api: getHWorld(); comfigured lombok
+- created first springboot microservice demo project; jayslabs.microservicedemo.accounts
+
+
 proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
 - updated spring.cloud.version to 2003.0.0 from 2023.0.1 due to spring cloud bug
 - removed rabbitmq, spring cloud monitor dependencies from all services; modifed pom, app.yml
@@ -81,6 +115,7 @@ service, repository, findByLoanNumber(); edit AccountsService
 - initial project setup and commit
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- added dependency: OpenFeign; @EnableFeignClients; new package service.client - new interfaces: CardsFeignClient, LoansFeignClient; In accounts, new CustomerDetailsDTO, updated CustomerMapper; ICustomerService, CustomerServiceImpl - inject CardsFeignClient, LoansFeignClient; new CustomerController - fetchCustomerDetails
 - updated spring.cloud.version to 2003.0.0 from 2023.0.1 due to spring cloud bug
 - added dep: Eureka Discovery Client; modified yml to connect to eurekaserver, added actuator related info
 - H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2

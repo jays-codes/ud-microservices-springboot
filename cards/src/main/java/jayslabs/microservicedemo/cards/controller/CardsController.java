@@ -36,7 +36,7 @@ import jayslabs.microservicedemo.cards.service.ICardsService;
 @Validated
 public class CardsController {
 
-	private final ICardsService srvc;
+	private ICardsService srvc;
 
 	@Value("${build.version}")
 	private String buildVersion;

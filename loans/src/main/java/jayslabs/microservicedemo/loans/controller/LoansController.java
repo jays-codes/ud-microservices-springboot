@@ -41,7 +41,7 @@ import jayslabs.microservicedemo.loans.service.ILoansService;
 @Validated
 public class LoansController {
 
-	private final ILoansService srvc;
+	private ILoansService srvc;
 	
 	@Value("${build.version}")
 	private String buildVersion;
@@ -87,7 +87,7 @@ public class LoansController {
 			}
 	)
 	@GetMapping("/fetch")
-	public ResponseEntity<LoansDTO> fetchLoansDetails(@RequestParam 
+	public ResponseEntity<LoansDTO> fetchLoanDetails(@RequestParam 
 			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
 			String mobile){
 		LoansDTO custdto = srvc.fetchLoan(mobile);
