@@ -71,6 +71,7 @@ repo: gh-config-demo
 - external github repo hosting yml property files used by microservices
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- Updated Loans and Cards Controller, fetch APIs, to return HttpStatus.OK, same as for fetch API in Customer Controller
 - updated spring.cloud.version to 2003.0.0 from 2023.0.1 due to spring cloud bug
 - added dep: Eureka Discovery Client; modified yml to connect to eurekaserver, added actuator related info
 - H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
@@ -93,6 +94,7 @@ service, repository, findByCardNumber();
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- Updated Loans and Cards Controller, fetch APIs, to return HttpStatus.OK, same as for fetch API in Customer Controller
 - updated spring.cloud.version to 2003.0.0 from 2023.0.1 due to spring cloud bug
 - added dep: Eureka Discovery Client; modified yml to connect to eurekaserver, added actuator related info
 - H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2

@@ -84,7 +84,7 @@ public class CardsController {
 		CardsDTO custdto = srvc.fetchCard(mobile);
 		
 		return ResponseEntity
-				.status(HttpStatus.FOUND)
+				.status(HttpStatus.OK)
 				.body(custdto);
 	}
 	

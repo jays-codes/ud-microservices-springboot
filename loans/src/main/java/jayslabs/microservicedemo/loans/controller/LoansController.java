@@ -93,7 +93,7 @@ public class LoansController {
 		LoansDTO custdto = srvc.fetchLoan(mobile);
 		
 		return ResponseEntity
-				.status(HttpStatus.FOUND)
+				.status(HttpStatus.OK)
 				.body(custdto);
 	}
 	
