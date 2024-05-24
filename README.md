@@ -2,7 +2,21 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+repo: ud-microservices-springboot-config
+- updated docker compose files for EurekaServer, FeignClient updates
+- updated docker image version (v4h2)
+- H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
+- updated docker-compose.yml, common-config.yml for all env, to set mysql containers
+- added common-config.yml for qa and prod env
+- refactored compose.yml to separate common properties to another file: common-config.yml
+- added definition for rabbitmq; rabbitmq dependency of configserver
+- modify compose file to ensure liveness and readiness of configserver; configserver dependency of other microservices
+- created default/docker-compose.yml
+- created folder for docker-compose
+- initial repo setup
+
 proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config Client, spring boot actuator)
+- updated docker compose files for EurekaServer, FeignClient updates
 - added jib plugin dependency to generate docker image; updated docker image version (v4h2)
 - @EnableEurekaServer, modify app.yml, add eurekaserver.yml to gh-config
 - initial proj setup
@@ -55,18 +69,6 @@ proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring b
 - refactored ymls, moved to Configserver
 - modified Application: @EnableConfigServer
 - initial project setup and commit
-
-repo: ud-microservices-springboot-config
-- updated docker image version (v4h2)
-- H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
-- updated docker-compose.yml, common-config.yml for all env, to set mysql containers
-- added common-config.yml for qa and prod env
-- refactored compose.yml to separate common properties to another file: common-config.yml
-- added definition for rabbitmq; rabbitmq dependency of configserver
-- modify compose file to ensure liveness and readiness of configserver; configserver dependency of other microservices
-- created default/docker-compose.yml
-- created folder for docker-compose
-- initial repo setup
 
 repo: gh-config-demo
 - added dep: spring-cloud-starter-bus-amqp; added rabbitmq configuration
