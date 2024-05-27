@@ -36,8 +36,11 @@ spring:
 #
 ## end of H2
 
+#uncomment to enable configserver
     config:
       import: "optional:configserver:http://localhost:8072/"
+
+#uncomment to enable rabbitmq
 #    rabbitmq:
 #      host: "localhost"
 #      port: 5672
