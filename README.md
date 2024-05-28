@@ -2,6 +2,9 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
+- init project setup
+
 repo: ud-microservices-springboot-config
 - updated docker compose files for EurekaServer, FeignClient updates
 - updated docker image version (v4h2)
