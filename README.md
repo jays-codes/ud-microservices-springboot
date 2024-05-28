@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
+- implemented Gatewayserver filter - addResponseHeader
 - added routeConfig() to return RouteLocator; routes(), route(), RouteLocatorBuilder, path(), filters(), uri(); enforce use of custom Route locator
 - updated gateway dependency to correct one; update app.yml to set locator.lowerCaseServiceId=true
 - updated gatewayserver related properties - application.yml, pom; updated version to v5

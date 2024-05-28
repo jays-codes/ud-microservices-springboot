@@ -1,5 +1,7 @@
 package jayslabs.microservices.gatewayserver;
 
+import java.time.LocalDateTime;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -19,17 +21,23 @@ public class GatewayserverApplication {
 			.route(
 					p -> p
 						.path("/jayslabs/accounts/**")
-						.filters(f->f.rewritePath("/jayslabs/accounts/(?<segment>.*)", "/${segment}"))
+						.filters(f->f.rewritePath("/jayslabs/accounts/(?<segment>.*)", "/${segment}")
+								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
+								)
 						.uri("lb://ACCOUNTS"))
 			.route(
 					p -> p
 						.path("/jayslabs/loans/**")
-						.filters(f->f.rewritePath("/jayslabs/loans/(?<segment>.*)", "/${segment}"))
+						.filters(f->f.rewritePath("/jayslabs/loans/(?<segment>.*)", "/${segment}")
+								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
+								)
 						.uri("lb://LOANS"))
 			.route(
 					p -> p
 						.path("/jayslabs/cards/**")
-						.filters(f->f.rewritePath("/jayslabs/cards/(?<segment>.*)", "/${segment}"))
+						.filters(f->f.rewritePath("/jayslabs/cards/(?<segment>.*)", "/${segment}")
+								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
+								)
 						.uri("lb://CARDS"))
 			.build();								
 					
