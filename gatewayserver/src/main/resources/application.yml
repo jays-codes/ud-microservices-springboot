@@ -33,6 +33,15 @@ logging:
     jayslabs:
       microservices:
         gatewayserver: DEBUG
+
+resiliency4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+        
          
        
  
