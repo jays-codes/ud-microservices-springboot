@@ -7,5 +7,5 @@ public interface ICustomerService {
 	/**
 	 * @param mobile - String
 	 **/
-	CustomerDetailsDTO fetchCustomerDetails(String mobile);
+	CustomerDetailsDTO fetchCustomerDetails(String mobile, String corrId);
 }

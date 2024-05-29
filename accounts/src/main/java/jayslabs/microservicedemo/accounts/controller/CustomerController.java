@@ -1,10 +1,13 @@
 package jayslabs.microservicedemo.accounts.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +31,8 @@ import jayslabs.microservicedemo.accounts.service.ICustomerService;
 @RequestMapping(path="/api", produces= {MediaType.APPLICATION_JSON_VALUE})
 @Validated
 public class CustomerController {
+
+	private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 	
 	private final ICustomerService custsrvc;
 
@@ -55,11 +60,14 @@ public class CustomerController {
     }
     )		
 	@GetMapping("/fetchCustomerDetails")
-	public ResponseEntity<CustomerDetailsDTO> fetchCustomerDetails(@RequestParam 
+	public ResponseEntity<CustomerDetailsDTO> fetchCustomerDetails(@RequestHeader("jayslabs-correlation-id") String corrId,
+			@RequestParam 
 			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
 			String mobile){
     	
-    	CustomerDetailsDTO dto = custsrvc.fetchCustomerDetails(mobile);
+    	logger.debug("jayslabs-correlation-id found: {}",corrId);
+    	
+    	CustomerDetailsDTO dto = custsrvc.fetchCustomerDetails(mobile, corrId);
     	
     	return ResponseEntity.status(HttpStatus.OK)
     			.body(dto);

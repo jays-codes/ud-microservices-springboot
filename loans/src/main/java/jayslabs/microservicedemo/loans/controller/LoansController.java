@@ -1,5 +1,7 @@
 package jayslabs.microservicedemo.loans.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +44,8 @@ import jayslabs.microservicedemo.loans.service.ILoansService;
 @Validated
 public class LoansController {
 
+	private static final Logger logger = LoggerFactory.getLogger(LoansController.class);	
+	
 	private ILoansService srvc;
 	
 	@Value("${build.version}")
@@ -87,9 +92,14 @@ public class LoansController {
 			}
 	)
 	@GetMapping("/fetch")
-	public ResponseEntity<LoansDTO> fetchLoanDetails(@RequestParam 
+	public ResponseEntity<LoansDTO> fetchLoanDetails(
+			@RequestHeader("jayslabs-correlation-id") String corrId, 			
+			@RequestParam 
 			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
 			String mobile){
+		
+    	logger.debug("jayslabs-correlation-id found: {}",corrId);
+		
 		LoansDTO custdto = srvc.fetchLoan(mobile);
 		
 		return ResponseEntity

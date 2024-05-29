@@ -74,3 +74,9 @@ info:
     name: "loans"
     description: "jayslabs loans microservice"
     version: "1.0.1"
+    
+logging:
+ level:
+   jayslabs:
+     microservicedemo:
+       loans: DEBUG

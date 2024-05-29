@@ -77,3 +77,9 @@ info:
     name: "accounts"
     description: "jayslabs accounts microservice"
     version: "1.0.1"
+    
+logging:
+ level:
+   jayslabs:
+     microservicedemo:
+       accounts: DEBUG
