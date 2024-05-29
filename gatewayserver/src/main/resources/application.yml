@@ -27,3 +27,12 @@ info:
     name: "gatewayserver"
     description: "jayslabs Gateway Server Application"
     version: "1.0.0"
+    
+logging:
+  level:
+    jayslabs:
+      microservices:
+        gatewayserver: DEBUG
+         
+       
+ 
