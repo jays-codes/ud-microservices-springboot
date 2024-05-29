@@ -31,6 +31,7 @@ proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config C
 - initial proj setup
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- enabled liveness, readiness for microservices; updated docker image version
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
 - updated docker image version (v4h2)
 - added dependency: OpenFeign; @EnableFeignClients; new package service.client - new interfaces: CardsFeignClient, LoansFeignClient; In accounts, new CustomerDetailsDTO, updated CustomerMapper; ICustomerService, CustomerServiceImpl - inject CardsFeignClient, LoansFeignClient; new CustomerController - fetchCustomerDetails
@@ -87,6 +88,7 @@ repo: gh-config-demo
 - external github repo hosting yml property files used by microservices
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- enabled liveness, readiness for microservices; updated docker image version
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
 - updated docker image version (v4h2)
 - Updated Loans and Cards Controller, fetch APIs, to return HttpStatus.OK, same as for fetch API in Customer Controller
@@ -112,6 +114,7 @@ service, repository, findByCardNumber();
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- enabled liveness, readiness for microservices; updated docker image version
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
 - updated docker image version (v4h2)
 - Updated Loans and Cards Controller, fetch APIs, to return HttpStatus.OK, same as for fetch API in Customer Controller
