@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
+- created REST API to return fallback message; FallbackController 
 - added resiliency4j dependency; added circuitbreaker code to accounts in gatewayserver; added circuit breaker related prop to gatewayserver application.yml
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
 - Implemented Custom Routing - Tracing and Logging using Spring Cloud Gateway; created RequestTraceFilter, ResponseTraceFilter, FilterUtility; modified logging in yml
