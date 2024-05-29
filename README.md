@@ -12,6 +12,7 @@ proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eure
 - init project setup
 
 repo: ud-microservices-springboot-config
+- updated docker-compose.yml for gatewayserver
 - updated docker compose files for EurekaServer, FeignClient updates
 - updated docker image version (v4h2)
 - H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
