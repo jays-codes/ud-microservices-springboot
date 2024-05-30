@@ -11,7 +11,7 @@ spring:
             lowerCaseServiceId: true
         httpclient:
           connect-timeout: 10000
-          response-timeout: 15s
+          response-timeout: 20s
         
 management:
   endpoints:

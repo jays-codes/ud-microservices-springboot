@@ -1,5 +1,6 @@
 package jayslabs.microservices.gatewayserver;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import org.springframework.boot.SpringApplication;
@@ -8,8 +9,7 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
-import static org.springframework.cloud.gateway.support.RouteMetadataUtils.CONNECT_TIMEOUT_ATTR;
-import static org.springframework.cloud.gateway.support.RouteMetadataUtils.RESPONSE_TIMEOUT_ATTR;
+import org.springframework.http.HttpMethod;
 
 @SpringBootApplication
 public class GatewayserverApplication {
@@ -36,6 +36,9 @@ public class GatewayserverApplication {
 						.path("/jayslabs/loans/**")
 						.filters(f->f.rewritePath("/jayslabs/loans/(?<segment>.*)", "/${segment}")
 								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
+								.retry(ret -> ret.setRetries(3)
+										.setMethods(HttpMethod.GET)
+										.setBackoff(Duration.ofMillis(100), Duration.ofMillis(1000), 2, true))
 								)
 						.uri("lb://LOANS"))
 			.route(

@@ -3,7 +3,8 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
-- Configured Clobal Httpclient Timeouts; set spring.cloud.httpclient.connect-timeout/response-timeout
+- Configured Retry mechanism for Loans
+- Configured Global Httpclient Timeouts; set spring.cloud.httpclient.connect-timeout/response-timeout
 - added circuitbreaker/openfeign dependency; implemented circuitbreaker inside microservice; created Fallback classes along side FeignClients
 - created REST API to return fallback message; FallbackController 
 - added resiliency4j dependency; added circuitbreaker code to accounts in gatewayserver; added circuit breaker related prop to gatewayserver application.yml
