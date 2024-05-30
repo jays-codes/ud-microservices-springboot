@@ -2,11 +2,12 @@ server:
     port: 8082
 
 spring:
-    application:
-        name: "accounts"
-    profiles:
-      active: "prod"
-
+  application:
+    name: "accounts"
+  profiles:
+    active: "prod"
+        
+    
 #uncomment for mysql 
 #    datasource:
 #        url: jdbc:mysql://localhost:3306/accountsdb
@@ -21,24 +22,28 @@ spring:
 #end of mysql
 
 #for H2
-    datasource:
-        url: jdbc:h2:mem:testdb
-        username: sa
-        password: ''
-    h2:
-        console:
-            enabled: true
-    jpa: 
-        database-platform: org.hibernate.dialect.H2Dialect
-        hibernate:
-            ddl-auto: update
-        show-sql: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: ''
+  h2:
+    console:
+      enabled: true
+  jpa: 
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 #
 ## end of H2
 
 #uncomment to enable configserver
-    config:
-      import: "optional:configserver:http://localhost:8072/"
+  config:
+    import: "optional:configserver:http://localhost:8072/"
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 
 #uncomment to enable rabbitmq
 #    rabbitmq:
@@ -91,3 +96,11 @@ logging:
    jayslabs:
      microservicedemo:
        accounts: DEBUG
+       
+resiliency4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000

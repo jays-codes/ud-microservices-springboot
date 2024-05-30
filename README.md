@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
+- added circuitbreaker/openfeign dependency; implemented circuitbreaker inside microservice; created Fallback classes along side FeignClients
 - created REST API to return fallback message; FallbackController 
 - added resiliency4j dependency; added circuitbreaker code to accounts in gatewayserver; added circuit breaker related prop to gatewayserver application.yml
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
@@ -34,6 +35,7 @@ proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config C
 - initial proj setup
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- added circuitbreaker/openfeign dependency; implemented circuitbreaker inside microservice; created Fallback classes along side FeignClients
 - enabled liveness, readiness for microservices; updated docker image version
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
 - updated docker image version (v4h2)

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jayslabs.microservicedemo.accounts.dto.LoansDTO;
 
-@FeignClient("loans")
+@FeignClient(name="loans", fallback=LoansFallback.class)
 public interface LoansFeignClient {
 
 

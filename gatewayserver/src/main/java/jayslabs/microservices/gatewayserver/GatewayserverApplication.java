@@ -23,7 +23,7 @@ public class GatewayserverApplication {
 						.path("/jayslabs/accounts/**")
 						.filters(f->f.rewritePath("/jayslabs/accounts/(?<segment>.*)", "/${segment}")
 								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
-								.circuitBreaker(cfg -> cfg.setName("accountsCircuitBreaker").setFallbackUri("forward:/contactSupport"))
+								//.circuitBreaker(cfg -> cfg.setName("accountsCircuitBreaker").setFallbackUri("forward:/contactSupport"))
 								)
 						.uri("lb://ACCOUNTS"))
 			.route(
