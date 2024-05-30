@@ -1,5 +1,9 @@
 package jayslabs.microservicedemo.accounts.controller;
 
+import java.util.concurrent.TimeoutException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -40,6 +45,8 @@ import jayslabs.microservicedemo.accounts.service.IAccountsService;
 //@AllArgsConstructor
 @Validated
 public class AccountsController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(AccountsController.class);	
 	
 	private final IAccountsService acctsrvc;
 	
@@ -188,12 +195,28 @@ public class AccountsController {
             )
     }
     )	
+    @Retry(name="getBuildInfo", fallbackMethod="getBuildInfoFallback")
 	@GetMapping("/build-info")
-	public ResponseEntity<String> getBuildInfo(){
+	public ResponseEntity<String> getBuildInfo() throws TimeoutException{
+    	
+    	logger.debug("getBuildInfo() invoked");
+    	
+    	throw new TimeoutException();
+    	
+//		return ResponseEntity
+//				.status(HttpStatus.OK)
+//				.body(buildVersion);
+	}
+
+	public ResponseEntity<String> getBuildInfoFallback(Throwable throwable){
+
+		logger.debug("getBuildInfoFallback() invoked");
+
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body(buildVersion);
+				.body("9.0");
 	}
+
     
     @Operation(
             summary = "Fetch java version REST API",

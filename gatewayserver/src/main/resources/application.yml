@@ -10,8 +10,8 @@ spring:
             enabled: false
             lowerCaseServiceId: true
         httpclient:
-          connect-timeout: 10000
-          response-timeout: 20s
+          connect-timeout: 15000
+          response-timeout: 30s
         
 management:
   endpoints:
