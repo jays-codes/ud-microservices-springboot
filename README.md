@@ -38,6 +38,7 @@ proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config C
 - initial proj setup
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- Implemented RateLimiter in accounts; modified accounts app.yml, accounts api, create getJavaVersionFallback() fallback method
 - Configured Retry for Accounts inside microservice ; used @Retry in /build-info API, created getBuildInfoFallback(), retry config in app.yml (accounts); set ignore retry for exceptions via app.yml;
 - added circuitbreaker/openfeign dependency; implemented circuitbreaker inside microservice; created Fallback classes along side FeignClients
 - enabled liveness, readiness for microservices; updated docker image version

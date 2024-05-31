@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -236,6 +237,7 @@ public class AccountsController {
             )
     }
     )	
+    @RateLimiter(name="getJavaVersion", fallbackMethod="getJdkVersionFallback")
 	@GetMapping("/java-version")
 	public ResponseEntity<String> getJdkVersion(){
 		return ResponseEntity
@@ -243,6 +245,12 @@ public class AccountsController {
 				.body(env.getProperty("JAVA_HOME"));
 	}
 	
+	public ResponseEntity<String> getJdkVersionFallback(Throwable throwable){
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("Java 17");
+	}
+	    
     @Operation(
             summary = "Fetch Support Info REST API",
             description = "REST API to fetch Support"
