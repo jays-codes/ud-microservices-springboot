@@ -2,6 +2,22 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+repo: ud-microservices-springboot-config
+- fixed docker-compose for prod version; runs grafana, loki, alloy, minio; updated for v7
+- updated compose yml for redis section
+- updated docker-compose.yml for gatewayserver
+- updated docker compose files for EurekaServer, FeignClient updates
+- updated docker image version (v4h2)
+- H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
+- updated docker-compose.yml, common-config.yml for all env, to set mysql containers
+- added common-config.yml for qa and prod env
+- refactored compose.yml to separate common properties to another file: common-config.yml
+- added definition for rabbitmq; rabbitmq dependency of configserver
+- modify compose file to ensure liveness and readiness of configserver; configserver dependency of other microservices
+- created default/docker-compose.yml
+- created folder for docker-compose
+- initial repo setup
+
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
 - Implemented RateLimiter in cards microservice; added dependency: spring-boot-starter-data-redis-rective; created redis RateLimiter beans, redisRateLimiter():RedisRateLimiter, userKeyResolver():KeyResolver; added requestRateLimiter() filter in routeConfig(); added rate limiter props in app.yml
 - Configured Retry mechanism for Loans
@@ -16,21 +32,6 @@ proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eure
 - updated gateway dependency to correct one; update app.yml to set locator.lowerCaseServiceId=true
 - updated gatewayserver related properties - application.yml, pom; updated version to v5
 - init project setup
-
-repo: ud-microservices-springboot-config
-- updated compose yml for redis section
-- updated docker-compose.yml for gatewayserver
-- updated docker compose files for EurekaServer, FeignClient updates
-- updated docker image version (v4h2)
-- H2 version of section 7; app.yml, pom, docker-compose.yml; updated verion from v3 to v3h2
-- updated docker-compose.yml, common-config.yml for all env, to set mysql containers
-- added common-config.yml for qa and prod env
-- refactored compose.yml to separate common properties to another file: common-config.yml
-- added definition for rabbitmq; rabbitmq dependency of configserver
-- modify compose file to ensure liveness and readiness of configserver; configserver dependency of other microservices
-- created default/docker-compose.yml
-- created folder for docker-compose
-- initial repo setup
 
 proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config Client, spring boot actuator)
 - updated docker compose files for EurekaServer, FeignClient updates
