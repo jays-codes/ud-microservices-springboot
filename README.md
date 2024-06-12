@@ -19,6 +19,7 @@ repo: ud-microservices-springboot-config
 - initial repo setup
 
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
+- micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - Implemented RateLimiter in cards microservice; added dependency: spring-boot-starter-data-redis-rective; created redis RateLimiter beans, redisRateLimiter():RedisRateLimiter, userKeyResolver():KeyResolver; added requestRateLimiter() filter in routeConfig(); added rate limiter props in app.yml
 - Configured Retry mechanism for Loans
 - Configured Global Httpclient Timeouts; set spring.cloud.httpclient.connect-timeout/response-timeout
@@ -34,12 +35,14 @@ proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eure
 - init project setup
 
 proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config Client, spring boot actuator)
+- micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - updated docker compose files for EurekaServer, FeignClient updates
 - added jib plugin dependency to generate docker image; updated docker image version (v4h2)
 - @EnableEurekaServer, modify app.yml, add eurekaserver.yml to gh-config
 - initial proj setup
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - Implemented RateLimiter in accounts; modified accounts app.yml, accounts api, create getJavaVersionFallback() fallback method
 - Configured Retry for Accounts inside microservice ; used @Retry in /build-info API, created getBuildInfoFallback(), retry config in app.yml (accounts); set ignore retry for exceptions via app.yml;
 - added circuitbreaker/openfeign dependency; implemented circuitbreaker inside microservice; created Fallback classes along side FeignClients
@@ -80,6 +83,7 @@ proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring da
 
 
 proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
+- micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - updated docker image version (v4h2)
 - updated spring.cloud.version to 2003.0.0 from 2023.0.1 due to spring cloud bug
 - removed rabbitmq, spring cloud monitor dependencies from all services; modifed pom, app.yml
@@ -100,6 +104,7 @@ repo: gh-config-demo
 - external github repo hosting yml property files used by microservices
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - enabled liveness, readiness for microservices; updated docker image version
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
 - updated docker image version (v4h2)
@@ -126,6 +131,7 @@ service, repository, findByCardNumber();
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - enabled liveness, readiness for microservices; updated docker image version
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
 - updated docker image version (v4h2)
