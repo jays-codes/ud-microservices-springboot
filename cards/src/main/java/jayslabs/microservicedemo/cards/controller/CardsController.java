@@ -89,9 +89,12 @@ public class CardsController {
 			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
 			String mobile){
 		
-    	logger.debug("jayslabs-correlation-id found: {}",corrId);		
-		
+    	//logger.debug("jayslabs-correlation-id found: {}",corrId);		
+    	logger.debug("fetchCardDetails method start");		
+
 		CardsDTO custdto = srvc.fetchCard(mobile);
+
+    	logger.debug("fetchCardDetails method end");		
 		
 		return ResponseEntity
 				.status(HttpStatus.OK)

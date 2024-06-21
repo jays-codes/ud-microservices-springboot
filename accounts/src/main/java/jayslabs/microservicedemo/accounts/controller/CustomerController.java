@@ -60,15 +60,18 @@ public class CustomerController {
     }
     )		
 	@GetMapping("/fetchCustomerDetails")
-	public ResponseEntity<CustomerDetailsDTO> fetchCustomerDetails(@RequestHeader("jayslabs-correlation-id") String corrId,
+	public ResponseEntity<CustomerDetailsDTO> fetchCustomerDetails(
+			@RequestHeader("jayslabs-correlation-id") String corrId,
 			@RequestParam 
 			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
 			String mobile){
     	
-    	logger.debug("jayslabs-correlation-id found: {}",corrId);
+    	//logger.debug("jayslabs-correlation-id found: {}",corrId);
+    	logger.debug("fetchCustomerDetails method start");
     	
     	CustomerDetailsDTO dto = custsrvc.fetchCustomerDetails(mobile, corrId);
-    	
+
+    	logger.debug("fetchCustomerDetails method end");
     	return ResponseEntity.status(HttpStatus.OK)
     			.body(dto);
 		

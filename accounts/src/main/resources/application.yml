@@ -95,10 +95,13 @@ info:
     version: "1.0.1"
     
 logging:
- level:
-   jayslabs:
-     microservicedemo:
-       accounts: DEBUG
+  level:
+    jayslabs:
+      microservicedemo:
+        accounts: DEBUG
+  pattern:
+    level: "%5 [${spring.application.name}, %X{trace_id},%X{span_id}]"
+    
        
 resiliency4j.circuitbreaker:
   configs:

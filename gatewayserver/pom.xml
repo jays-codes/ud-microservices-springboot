@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>21</java.version>
 		<spring-cloud.version>2023.0.1</spring-cloud.version>
+		<otelVersion>2.5.0</otelVersion>	
 	</properties>
 	<dependencies>
 		<dependency>
@@ -28,6 +29,14 @@
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/io.opentelemetry.javaagent/opentelemetry-javaagent -->
+		<dependency>
+			<groupId>io.opentelemetry.javaagent</groupId>
+			<artifactId>opentelemetry-javaagent</artifactId>
+			<version>${otelVersion}</version>
+			<scope>runtime</scope>
+		</dependency>		
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -85,7 +94,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>jaymenorca/${project.artifactId}:v8</image>
+						<image>jaymenorca/${project.artifactId}:v9</image>
 					</to>
 				</configuration>
 			</plugin>

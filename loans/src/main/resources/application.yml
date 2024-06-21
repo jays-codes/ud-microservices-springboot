@@ -87,7 +87,9 @@ info:
     version: "1.0.1"
     
 logging:
- level:
-   jayslabs:
-     microservicedemo:
-       loans: DEBUG
+  level:
+    jayslabs:
+      microservicedemo:
+        loans: DEBUG
+  pattern:
+    level: "%5 [${spring.application.name}, %X{trace_id},%X{span_id}]"

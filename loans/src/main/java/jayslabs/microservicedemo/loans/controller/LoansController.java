@@ -98,9 +98,12 @@ public class LoansController {
 			@Pattern(regexp = "(^$|[0-9]{10})", message="Mobile number must be 10 digits")
 			String mobile){
 		
-    	logger.debug("jayslabs-correlation-id found: {}",corrId);
+    	//logger.debug("jayslabs-correlation-id found: {}",corrId);
+    	logger.debug("fetchLoanDetails method start");
 		
-		LoansDTO custdto = srvc.fetchLoan(mobile);
+    	LoansDTO custdto = srvc.fetchLoan(mobile);
+
+		logger.debug("fetchLoanDetails method end");
 		
 		return ResponseEntity
 				.status(HttpStatus.OK)
