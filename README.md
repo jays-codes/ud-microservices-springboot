@@ -21,6 +21,7 @@ repo: ud-microservices-springboot-config
 - initial repo setup
 
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
+- updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - Implemented RateLimiter in cards microservice; added dependency: spring-boot-starter-data-redis-rective; created redis RateLimiter beans, redisRateLimiter():RedisRateLimiter, userKeyResolver():KeyResolver; added requestRateLimiter() filter in routeConfig(); added rate limiter props in app.yml
 - Configured Retry mechanism for Loans
@@ -37,6 +38,7 @@ proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eure
 - init project setup
 
 proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config Client, spring boot actuator)
+- updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - updated docker compose files for EurekaServer, FeignClient updates
 - added jib plugin dependency to generate docker image; updated docker image version (v4h2)
@@ -44,6 +46,7 @@ proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config C
 - initial proj setup
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - Implemented RateLimiter in accounts; modified accounts app.yml, accounts api, create getJavaVersionFallback() fallback method
 - Configured Retry for Accounts inside microservice ; used @Retry in /build-info API, created getBuildInfoFallback(), retry config in app.yml (accounts); set ignore retry for exceptions via app.yml;
@@ -85,6 +88,7 @@ proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring da
 
 
 proj: configserver (springboot 3.2.5 : jdk21, mvn, jar | Config Server, spring boot actuator)
+- updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - updated docker image version (v4h2)
 - updated spring.cloud.version to 2003.0.0 from 2023.0.1 due to spring cloud bug
@@ -106,6 +110,7 @@ repo: gh-config-demo
 - external github repo hosting yml property files used by microservices
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - enabled liveness, readiness for microservices; updated docker image version
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
@@ -133,6 +138,7 @@ service, repository, findByCardNumber();
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - enabled liveness, readiness for microservices; updated docker image version
 - Modify microservices to receive correlation Id from custom gatewayserver filter, and pass it to downstream microservices; enabled logging to display correlation id
