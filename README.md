@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 repo: ud-microservices-springboot-config
+- updated compose for prometheus; added datasource.yaml to separate grafana ds; linked prometheus to grafana
 - fixed docker-compose for prod version; runs grafana, loki, alloy, minio; updated for v7
 - updated compose yml for redis section
 - updated docker-compose.yml for gatewayserver
