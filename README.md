@@ -25,6 +25,7 @@ proj: all microservices
 - updated google jib version
 
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
+- updated for implementing gatewayserver as Secured Resource Server; dep added: spring-boot-starter-security, spring-security-oauth2-resource-server, spring-security-oatuh2-jose; created SecurityConfig class, springSecurityFilterChain(); modified app.yml to get public cert from auth server
 - updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - Implemented RateLimiter in cards microservice; added dependency: spring-boot-starter-data-redis-rective; created redis RateLimiter beans, redisRateLimiter():RedisRateLimiter, userKeyResolver():KeyResolver; added requestRateLimiter() filter in routeConfig(); added rate limiter props in app.yml
