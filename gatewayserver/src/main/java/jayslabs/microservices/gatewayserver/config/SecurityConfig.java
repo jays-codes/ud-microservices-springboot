@@ -18,38 +18,55 @@ import reactor.core.publisher.Mono;
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityConfig {
-	
-	@Bean
-	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity httpSec) {
-		httpSec
-			.authorizeExchange(
-				exchg -> exchg
-				.pathMatchers(HttpMethod.GET)
-				.permitAll()
-//				.pathMatchers("/jayslabs/accounts/**").hasRole("ACCOUNTS")
-//				.pathMatchers("/jayslabs/loans/**").hasRole("LOANS")
-//				.pathMatchers("/jayslabs/cards/**").hasRole("CARDS"))
-				.pathMatchers("/jayslabs/accounts/**").authenticated()
-				.pathMatchers("/jayslabs/loans/**").authenticated()
-				.pathMatchers("/jayslabs/cards/**").authenticated())
 
+//Without Authorization
+//	@Bean
+//	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity httpSec) {
+//		httpSec
+//			.authorizeExchange(
+//				exchg -> exchg
+//				.pathMatchers(HttpMethod.GET)
+//				.permitAll()
+//				.pathMatchers("/jayslabs/accounts/**").authenticated()
+//				.pathMatchers("/jayslabs/loans/**").authenticated()
+//				.pathMatchers("/jayslabs/cards/**").authenticated())
+//
 //			.oauth2ResourceServer(
 //					serverspec -> serverspec
-//						.jwt(jspec -> jspec.jwtAuthenticationConverter(grantedAuthoritiesExtractor()))
-//		);
-			
+//						.jwt(Customizer.withDefaults()));
+//
+//		//no browser involved so disable
+//		httpSec.csrf(csrfspec -> csrfspec.disable());
+//		return httpSec.build();
+//	}
+//
+//	private Converter<Jwt, Mono<AbstractAuthenticationToken>> grantedAuthoritiesExtractor() {
+//	JwtAuthenticationConverter authconverter = new JwtAuthenticationConverter();
+//	authconverter.setJwtGrantedAuthoritiesConverter(new KeyCloakRoleConverter());
+//	return new ReactiveJwtAuthenticationConverterAdapter(authconverter);
+//}
+
+	// with Authorization
+	@Bean
+	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity httpSec) {
+		httpSec.authorizeExchange(exchg -> exchg.pathMatchers(HttpMethod.GET).permitAll()
+				.pathMatchers("/jayslabs/accounts/**").hasRole("ACCOUNTS")
+				.pathMatchers("/jayslabs/loans/**").hasRole("LOANS")
+				.pathMatchers("/jayslabs/cards/**").hasRole("CARDS"))
 			.oauth2ResourceServer(
 					serverspec -> serverspec
-						.jwt(Customizer.withDefaults()));
+						.jwt(jspec -> jspec.jwtAuthenticationConverter(grantedAuthoritiesExtractor()))
+		);
 
-		//no browser involved so disable
+
+		// no browser involved so disable
 		httpSec.csrf(csrfspec -> csrfspec.disable());
 		return httpSec.build();
 	}
-	
-//	private Converter<Jwt, Mono<AbstractAuthenticationToken>> grantedAuthoritiesExtractor() {
-//		JwtAuthenticationConverter authconverter = new JwtAuthenticationConverter();
-//		authconverter.setJwtGrantedAuthoritiesConverter(new KeyCloakRoleConverter());
-//		return new ReactiveJwtAuthenticationConverterAdapter(authconverter);
-//	}
+
+	private Converter<Jwt, Mono<AbstractAuthenticationToken>> grantedAuthoritiesExtractor() {
+		JwtAuthenticationConverter authconverter = new JwtAuthenticationConverter();
+		authconverter.setJwtGrantedAuthoritiesConverter(new KeycloakRoleConverter());
+		return new ReactiveJwtAuthenticationConverterAdapter(authconverter);
+	}
 }
