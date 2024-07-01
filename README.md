@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 repo: ud-microservices-springboot-config
+- updated for OAuth2; used Authentication Server; removed port mapping for microservices; updated compose yml file to add keycloak entry
 - modified to use OAuth 2.0; modified image versions to v10
 - modified compose to add definitions for tempo/opentelemetry
 - updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
