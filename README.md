@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 repo: ud-microservices-springboot-config
+- modified to use OAuth 2.0; modified image versions to v10
 - modified compose to add definitions for tempo/opentelemetry
 - updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - updated compose for prometheus; added datasource.yaml to separate grafana ds; linked prometheus to grafana
