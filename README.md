@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: message (springboot 3.3.1 : jdk21, mvn, jar | Spring Cloud Functions)
+- added dep:spring-cloud-starter-function-web (temp); modified application.yml
 - implemented Functions<> in MessageFunctions
 - create AccountsMessageDTO record; MessageFunctions 
 - init project setup
