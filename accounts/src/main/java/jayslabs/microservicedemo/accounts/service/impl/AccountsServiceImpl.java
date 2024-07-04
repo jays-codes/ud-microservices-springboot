@@ -3,10 +3,14 @@ package jayslabs.microservicedemo.accounts.service.impl;
 import java.util.Optional;
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 
 import jayslabs.microservicedemo.accounts.constants.AccountsConstants;
 import jayslabs.microservicedemo.accounts.dto.AccountsDTO;
+import jayslabs.microservicedemo.accounts.dto.AccountsMsgDTO;
 import jayslabs.microservicedemo.accounts.dto.CustomerDTO;
 import jayslabs.microservicedemo.accounts.entity.Accounts;
 import jayslabs.microservicedemo.accounts.entity.Customer;
@@ -23,8 +27,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class AccountsServiceImpl implements IAccountsService {
 
+	private static final Logger log = LoggerFactory.getLogger(AccountsServiceImpl.class);
+
 	private AccountsRepository acctsrepo;
 	private CustomerRepository custrepo;
+	private final StreamBridge streambridge;
 	
 	@Override
 	public void createAccount(CustomerDTO custdto) {		
@@ -36,9 +43,17 @@ public class AccountsServiceImpl implements IAccountsService {
 		}
 		
 		Customer savedCust = custrepo.save(cust);
-		acctsrepo.save(createNewAccount(savedCust));
+		Accounts savedacct = acctsrepo.save(createNewAccount(savedCust));
+		sendCommunication(savedacct,savedCust);
 	}
 
+	private void sendCommunication(Accounts acct, Customer cust) {
+		var msgdto = new AccountsMsgDTO(acct.getAccountNumber(), cust.getName(), cust.getEmail(),
+				cust.getMobileNumber());
+		log.info("Sending Communication request for details: {}", msgdto);
+		var result = streambridge.send("sendCommunication-out-0", msgdto);
+		log.info("Comm request successfully triggered ? : {}", result);
+	}
 	
 	private Accounts createNewAccount(Customer cust) {
 		Accounts newacct = new Accounts();

@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.6</version>
+		<version>3.3.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>jayslabs.microservices</groupId>
@@ -106,7 +106,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>jaymenorca/${project.artifactId}:v10</image>
+						<image>jaymenorca/${project.artifactId}:v11</image>
 					</to>
 				</configuration>
 			</plugin>
