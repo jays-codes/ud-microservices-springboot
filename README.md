@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: message (springboot 3.3.1 : jdk21, mvn, jar | Spring Cloud Functions)
+- message microservice is subscribe to, and reads from event broker (rabbitmq); only logs event for now
 - updated for RabbitMQ, spring cloud stream, spring cloud functions; added sendCommunication() in createAccount() to send event message dto to message broker microservice; Autowired StreamBridge bean in AccountServiceImpl
 - added dep:spring-cloud-starter-function-web (temp); modified application.yml
 - implemented Functions<> in MessageFunctions
@@ -61,7 +62,7 @@ proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config C
 - initial proj setup
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
-- updated for RabbitMQ, spring cloud stream, spring cloud functions; added sendCommunication() in createAccount() to send event message dto to message broker microservice; Autowired StreamBridge bean in AccountServiceImpl
+- updated for RabbitMQ, spring cloud stream, spring cloud functions; added sendCommunication() in createAccount() to send event message dto to event broker/rabbitmq; Autowired StreamBridge bean in AccountServiceImpl
 - updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - Implemented RateLimiter in accounts; modified accounts app.yml, accounts api, create getJavaVersionFallback() fallback method

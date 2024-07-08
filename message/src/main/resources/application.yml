@@ -2,7 +2,7 @@ server:
   port: 9010
 
 spring:
-  applicatiion:
+  application:
     name: "message"
   cloud:
     function:
