@@ -106,7 +106,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>jaymenorca/${project.artifactId}:v11</image>
+						<image>jaymenorca/${project.artifactId}:v12</image>
 					</to>
 				</configuration>
 			</plugin>

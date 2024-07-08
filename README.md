@@ -33,6 +33,7 @@ repo: ud-microservices-springboot-config
 - initial repo setup
 
 proj: all microservices
+- updated images for v12; used compose to run containers for current topic: event driven microservices/rabbitmq
 - updated google jib version
 
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
