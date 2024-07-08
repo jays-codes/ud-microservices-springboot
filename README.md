@@ -12,6 +12,7 @@ proj: message (springboot 3.3.1 : jdk21, mvn, jar | Spring Cloud Functions)
 - init project setup
 
 repo: ud-microservices-springboot-config
+- updated for Event driver microservices, rabbitmq; added compose entries for message microservice and rabbit images
 - updated for OAuth2; used Authentication Server; removed port mapping for microservices; updated compose yml file to add keycloak entry
 - modified to use OAuth 2.0; modified image versions to v10
 - modified compose to add definitions for tempo/opentelemetry
