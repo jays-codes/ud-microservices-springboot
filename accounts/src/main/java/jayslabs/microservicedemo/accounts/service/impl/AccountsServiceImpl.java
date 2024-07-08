@@ -126,4 +126,21 @@ public class AccountsServiceImpl implements IAccountsService {
 		custrepo.deleteById(custId);
 		return true;
 	}
+
+	@Override
+	public boolean updateCommStatus(Long acctnum) {
+		boolean isUpdated = false;
+		
+		if (acctnum!=null) {
+			Accounts acct = acctsrepo
+					.findById(acctnum)
+					.orElseThrow(() -> new ResourceNotFoundException("Account","AccountNumber",acctnum.toString())
+					);
+			acct.setCommunicationSw(true);
+			acctsrepo.save(acct);
+			isUpdated = true;
+		}
+		
+		return isUpdated;
+	}
 }
