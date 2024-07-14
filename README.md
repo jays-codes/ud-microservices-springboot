@@ -2,6 +2,10 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+repo: ud-microservices-springboot-k8s
+- setup local K8s cluster in docker
+- repo for Kubernetes config-related yaml files: dashboard-adminuser, dashboard-rolebinding, secret
+
 proj: message (springboot 3.3.1 : jdk21, mvn, jar | Spring Cloud Functions)
 - updated for Apache Kafka; added compose entries for Kafka; updated application.yml for kafka entries
 - modified application.yml, added binding to publish event to communication-sent queue
