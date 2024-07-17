@@ -3,6 +3,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 repo: ud-microservices-springboot-k8s
+- branch:kubernetes; modified minifest files: accounts, configmaps
 - branch:kubernetes; added K8s manifest files - eurekaserver, gatewayserver, accounts, loans, cards, keycloak
 - branch:kubernetes; added K8s config map file - configmaps.yml
 - branch:kubernetes; added K8s manifest file - configserver.yml
