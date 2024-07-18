@@ -2,6 +2,10 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+repo: ud-microservices-springboot-helm
+- branch: helm; created helm chart /template common across jayslabs microservices: service, deployment, configmap 
+- branch: helm; Repo with Helm related updates [branch:helm]
+
 repo: ud-microservices-springboot-k8s
 - branch:kubernetes; modified minifest files: accounts, configmaps
 - branch:kubernetes; added K8s manifest files - eurekaserver, gatewayserver, accounts, loans, cards, keycloak
