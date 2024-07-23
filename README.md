@@ -3,6 +3,8 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 repo: ud-microservices-springboot-helm
+- branch: helm; deployed all services and microservices in K8s cluster via helm charts; tried debugging issue with tempo ingester going crashloopbackoff;
+- branch: helm; implemented Grafana service in K8s via bitnami template, modified values.yaml; configured datasources in grafana values.yaml
 - branch: helm; implemented Loki and Tempo service in K8s via bitnami template, modified values.yaml
 - branch: helm; implemented Prometheus service in K8s via bitnami template, modified values.yaml
 - branch: helm; implemented Kafka service in K8s via bitnami template, modified values.yaml
