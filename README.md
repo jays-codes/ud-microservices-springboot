@@ -2,7 +2,24 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+repo: ud-microservices-springboot-helm
+- branch: helm; deployed all services and microservices in K8s cluster via helm charts; tried debugging issue with tempo ingester going crashloopbackoff;
+- branch: helm; implemented Grafana service in K8s via bitnami template, modified values.yaml; configured datasources in grafana values.yaml
+- branch: helm; implemented Loki and Tempo service in K8s via bitnami template, modified values.yaml
+- branch: helm; implemented Prometheus service in K8s via bitnami template, modified values.yaml
+- branch: helm; implemented Kafka service in K8s via bitnami template, modified values.yaml
+- branch: helm; implemented Keycloak service in K8s via bitnami template, modified values.yaml
+- branch: helm; configured environment-specific helm chart to deploy all microservices; dev, qa, prod
+- branch: helm; configured helm charts for other microservices: loans, card, configserver, eurekaserver, gatewayserver, message
+- branch: helm; configured accounts microservice helm charts; values.yaml, cart.yaml; linked to dependencies
+- branch: helm; created helm chart /template common across jayslabs microservices: service, deployment, configmap 
+- branch: helm; Repo with Helm related updates [branch:helm]
+
 repo: ud-microservices-springboot-k8s
+- branch:kubernetes; modified minifest files: accounts, configmaps
+- branch:kubernetes; added K8s manifest files - eurekaserver, gatewayserver, accounts, loans, cards, keycloak
+- branch:kubernetes; added K8s config map file - configmaps.yml
+- branch:kubernetes; added K8s manifest file - configserver.yml
 - setup local K8s cluster in docker
 - repo for Kubernetes config-related yaml files: dashboard-adminuser, dashboard-rolebinding, secret
 
