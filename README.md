@@ -2,6 +2,11 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (conducted by M. Reddy - udemy)
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+proj: all microservices
+- updated images for v14; updated for Spring Cloud Kubernetes Discovery Server; removed eureka server;
+- updated images for v13; updated for Apache Kafka; added compose entries for Kafka;
+- updated images for v12; used compose to run containers for current topic: event driven microservices/rabbitmq
+- updated google jib version
 
 repo: ud-microservices-springboot-k8s
 - Wrote Spring cloud K8s Discovery Server (server-side service discover and load balancing); added manifest file
@@ -58,11 +63,6 @@ repo: ud-microservices-springboot-config
 - created folder for docker-compose
 - initial repo setup
 
-proj: all microservices
-- updated images for v13; updated for Apache Kafka; added compose entries for Kafka;
-- updated images for v12; used compose to run containers for current topic: event driven microservices/rabbitmq
-- updated google jib version
-
 proj: gatewayserver (springboot 3.2.6 : jdk21, mvn, jar | Reactive Gateway, Eureka Discovery Client, Config Client, SpringBoot Actuator, SpringBoot Devtools)
 - implemented Authorization, KeycloakConverter class, hasRole(), grantedAuthoritiesExtractor(), keycloak roles to SimpleGrantedAuthority instances 
 - updated for implementing gatewayserver as Secured Resource Server; dep added: spring-boot-starter-security, spring-security-oauth2-resource-server, spring-security-oatuh2-jose; created SecurityConfig class, springSecurityFilterChain(); modified app.yml to get public cert from auth server
@@ -91,6 +91,7 @@ proj: eurekaserver (springboot 3.2.5 : jdk21, mvn, jar | Eureka Server, Config C
 - initial proj setup
 
 proj: accounts (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- updated for Spring Cloud Kubernetes Discovery Server; updated pom with kubernetes-discoveryclient dep, @EnableDiscoveryClient at app, modified app yml to remove eureka section, add discovery related section; Modified FeignClient interfaces to define K8s cluster url for cards/loans
 - updated for Apache Kafka; added compose entries for Kafka; updated application.yml for kafka entries
 - created Consumer<> spring cloud function to trigger on event from consumer-sent queue; modified app.yml to subscribe to new queue; Consumer<> function to update a new bool field in accounts - modified related classes: Accounts, AccountServiceImpl...
 - updated for RabbitMQ, spring cloud stream, spring cloud functions; added sendCommunication() in createAccount() to send event message dto to event broker/rabbitmq; Autowired StreamBridge bean in AccountServiceImpl
@@ -158,6 +159,7 @@ repo: gh-config-demo
 - external github repo hosting yml property files used by microservices
 
 proj: cards (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- updated for Spring Cloud Kubernetes Discovery Server; updated pom with kubernetes-discoveryclient dep, @EnableDiscoveryClient at app, modified app yml to remove eureka section, add discovery related section; Modified FeignClient interfaces to define K8s cluster url for cards/loans
 - updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - enabled liveness, readiness for microservices; updated docker image version
@@ -186,6 +188,7 @@ service, repository, findByCardNumber();
 - initial project setup and commit
 
 proj: loans (springboot 3.2.4 : jdk21, mvn, jar | spring web, H2DB, spring data JPA, spring boot actuator, spring boot DevTools, Lombok, Validation)
+- updated for Spring Cloud Kubernetes Discovery Server; updated pom with kubernetes-discoveryclient dep, @EnableDiscoveryClient at app, modified app yml to remove eureka section, add discovery related section; Modified FeignClient interfaces to define K8s cluster url for cards/loans
 - updated to use OpenTelemetry - pom, app.yml, added logging pattern to generate tags,trace_id,span_id; updated microservices to v9
 - micrometer setup; Added dep: micrometer-registry-prometheus to all ms; added prop to all app.yml 
 - enabled liveness, readiness for microservices; updated docker image version

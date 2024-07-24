@@ -33,6 +33,10 @@ spring:
         hibernate:
             ddl-auto: update
         show-sql: true
+    cloud:
+      kubernetes:
+        discovery:
+          all-namespaces: true
 #
 ## end of H2
 
@@ -71,15 +75,6 @@ endpoints:
   shutdown:
     enabled: true
 
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    fetchRegistry: true
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://localhost:8070/eureka/
-      
 info:
   app:
     name: "loans"

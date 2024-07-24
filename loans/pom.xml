@@ -89,7 +89,7 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-kubernetes-discoveryclient</artifactId>
 		</dependency>
 
 		<dependency>
@@ -137,7 +137,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>jaymenorca/${project.artifactId}:v13</image>
+						<image>jaymenorca/${project.artifactId}:v14</image>
 					</to>
 				</configuration>
 			</plugin>

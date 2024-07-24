@@ -3,6 +3,7 @@ package jayslabs.microservicedemo.cards;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
@@ -13,6 +14,7 @@ import io.swagger.v3.oas.annotations.info.License;
 import jayslabs.microservicedemo.cards.dto.CardsContactInfoDTO;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 @EnableJpaAuditing(auditorAwareRef="auditAwareImpl")
 @EnableConfigurationProperties(value= {CardsContactInfoDTO.class})
 @OpenAPIDefinition(

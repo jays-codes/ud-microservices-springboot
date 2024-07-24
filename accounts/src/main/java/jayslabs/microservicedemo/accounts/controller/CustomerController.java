@@ -24,7 +24,7 @@ import jayslabs.microservicedemo.accounts.dto.ErrorResponseDTO;
 import jayslabs.microservicedemo.accounts.service.ICustomerService;
 
 @Tag(
-		name="REST APIs for Customer in JayslabS",
+		name="REST APIs for Customer in Jayslabs",
 		description="FETCH Customer details"
 )
 @RestController
