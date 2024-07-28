@@ -3,6 +3,8 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 List below ARE NOT NOTES. They are topics covered as of latest.
 
 proj: all microservices
+- ran microservices network in Google Cloud - GKE Cluster
+- updated microservices to use new Discovery server (server-side service discovery); removed eureka server references
 - updated images for v14; updated for Spring Cloud Kubernetes Discovery Server; removed eureka server;
 - updated images for v13; updated for Apache Kafka; added compose entries for Kafka;
 - updated images for v12; used compose to run containers for current topic: event driven microservices/rabbitmq
