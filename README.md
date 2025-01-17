@@ -2,6 +2,9 @@
 Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes templates/demo
 List below ARE NOT NOTES. They are topics covered as of latest.
 
+####  [handwritten notes](https://github.com/user-attachments/files/18447505/microservicesSpringbootDockerK8s.pdf)
+
+
 proj: all microservices
 - ran microservices network in Google Cloud - GKE Cluster
 - updated microservices to use new Discovery server (server-side service discovery); removed eureka server references
